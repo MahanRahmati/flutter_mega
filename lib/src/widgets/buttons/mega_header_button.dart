@@ -6,13 +6,13 @@ import 'package:mega/src/utils/theme_picker.dart';
 class MegaHeaderButton extends StatefulWidget {
   final IconData icon;
   final bool isActive;
-  final VoidCallback? onTap;
+  final VoidCallback? onPressed;
 
   const MegaHeaderButton({
     Key? key,
     required this.icon,
     this.isActive = false,
-    this.onTap,
+    this.onPressed,
   }) : super(key: key);
 
   @override
@@ -24,36 +24,35 @@ class _MegaHeaderButtonState extends State<MegaHeaderButton> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: widget.onTap,
-      onHover: (hover) => setState(() => hovering = hover),
-      child: AnimatedContainer(
-        height: 34,
-        width: 36,
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.ease,
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-          border: Border.all(
-            width: 1,
-            color: ThemePicker.of(context).pick(
-              light: MegaColors.borderColorLight,
-              dark: MegaColors.borderColorDark,
-            ),
+    return AnimatedContainer(
+      height: 34,
+      width: 36,
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.ease,
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+        border: Border.all(
+          width: 1,
+          color: ThemePicker.of(context).pick(
+            light: MegaColors.borderColorLight,
+            dark: MegaColors.borderColorDark,
           ),
-          color: hovering
-              ? ThemePicker.of(context).pick(
-                  light: MegaColors.hoverColorLight,
-                  dark: MegaColors.hoverColorDark,
-                )
-              : ThemePicker.of(context).pick(
-                  light: MegaColors.backgroundColorLight,
-                  dark: MegaColors.backgroundColorDark,
-                ),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Icon(widget.icon, size: 17),
+        color: hovering
+            ? ThemePicker.of(context).pick(
+                light: MegaColors.hoverColorLight,
+                dark: MegaColors.hoverColorDark,
+              )
+            : ThemePicker.of(context).pick(
+                light: MegaColors.backgroundColorLight,
+                dark: MegaColors.backgroundColorDark,
+              ),
       ),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: InkWell(
+          onTap: widget.onPressed,
+          onHover: (hover) => setState(() => hovering = hover),
+          child: Icon(widget.icon, size: 17)),
     );
   }
 }
