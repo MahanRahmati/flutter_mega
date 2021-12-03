@@ -1,3 +1,7 @@
+## 0.0.3+1
+
+- add MegaTextField 
+
 ## 0.0.3
 
 - add MegaDrawerItem,MegaHeaderBar,MegaLinkedButtons,MegaLinkedIconButton and MegaTextField
