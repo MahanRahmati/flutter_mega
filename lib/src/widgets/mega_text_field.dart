@@ -39,7 +39,7 @@ class MegaTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: MegaStyle.small,
+      padding: MegaStyle.hHorizontal,
       child: SizedBox(
         height: MegaStyle.buttonSize,
         child: TextFormField(

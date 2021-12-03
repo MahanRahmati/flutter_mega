@@ -9,21 +9,24 @@ class MegaLinkedButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MegaStyle.buttonSize,
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        borderRadius: MegaStyle.borderRadius,
-        border: Border.all(
-          color: ThemePicker.of(context).pick(
-            light: MegaStyle.borderColorLight,
-            dark: MegaStyle.borderColorDark,
+    return Padding(
+      padding: MegaStyle.hHorizontal,
+      child: Container(
+        height: MegaStyle.buttonSize,
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          borderRadius: MegaStyle.borderRadius,
+          border: Border.all(
+            color: ThemePicker.of(context).pick(
+              light: MegaStyle.borderColorLight,
+              dark: MegaStyle.borderColorDark,
+            ),
           ),
         ),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(4.0),
-        child: Row(children: buttons),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(4.0),
+          child: Row(children: buttons),
+        ),
       ),
     );
   }

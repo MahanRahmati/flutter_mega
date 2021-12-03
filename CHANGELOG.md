@@ -1,3 +1,7 @@
+## 0.0.4+1
+
+- fix paddings
+
 ## 0.0.4
 
 - add MegaThemes

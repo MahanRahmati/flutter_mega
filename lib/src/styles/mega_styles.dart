@@ -54,7 +54,7 @@ abstract class MegaStyle {
 
   // Doubles
   static const double padding = 7;
-  static const double halfPadding = 3;
+  static const double halfPadding = 3.5;
   static const double borderRadiusSize = 5.0;
   static const double headerBarHeight = 48;
   static const double buttonSize = 34;
@@ -74,6 +74,12 @@ abstract class MegaStyle {
   );
   static const EdgeInsets vertical = EdgeInsets.symmetric(
     vertical: padding,
+  );
+  static const EdgeInsets hHorizontal = EdgeInsets.symmetric(
+    horizontal: halfPadding,
+  );
+  static const EdgeInsets hVertical = EdgeInsets.symmetric(
+    vertical: halfPadding,
   );
   static const EdgeInsets left = EdgeInsets.only(left: padding);
   static const EdgeInsets top = EdgeInsets.only(top: padding);
