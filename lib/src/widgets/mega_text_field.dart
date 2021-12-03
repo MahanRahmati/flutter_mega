@@ -53,30 +53,7 @@ class MegaTextField extends StatelessWidget {
           cursorColor: accentColor,
           maxLines: maxLines ?? 1,
           onChanged: onChanged,
-          style: TextStyle(
-            color: ThemePicker.of(context).pick(
-              light: MegaStyle.primaryTextColorLight,
-              dark: MegaStyle.primaryTextColorDark,
-            ),
-          ),
           decoration: InputDecoration(
-            contentPadding: const EdgeInsets.only(bottom: MegaStyle.iconSize),
-            filled: true,
-            fillColor: ThemePicker.of(context).pick(
-              light: MegaStyle.textFieldBackgroundColorLight,
-              dark: MegaStyle.textFieldBackgroundColorDark,
-            ),
-            hoverColor: ThemePicker.of(context).pick(
-              light: MegaStyle.hoverColorLight,
-              dark: MegaStyle.hoverColorDark,
-            ),
-            isDense: true,
-            hintStyle: TextStyle(
-              color: ThemePicker.of(context).pick(
-                light: MegaStyle.hintColorLight,
-                dark: MegaStyle.hintColorDark,
-              ),
-            ),
             hintText: hint,
             prefixIcon: Icon(
               prefixIcon,
@@ -101,39 +78,7 @@ class MegaTextField extends StatelessWidget {
                     onPressed: onSuffixIconPressed,
                   )
                 : null,
-            counterStyle: const TextStyle(height: double.minPositive),
             counterText: "",
-            disabledBorder: OutlineInputBorder(
-              borderRadius: MegaStyle.borderRadius,
-              borderSide: BorderSide(
-                color: ThemePicker.of(context).pick(
-                  light: MegaStyle.backgroundColorLight,
-                  dark: MegaStyle.backgroundColorDark,
-                ),
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: MegaStyle.borderRadius,
-              borderSide: BorderSide(color: accentColor),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: MegaStyle.borderRadius,
-              borderSide: BorderSide(
-                color: ThemePicker.of(context).pick(
-                  light: MegaStyle.borderColorLight,
-                  dark: MegaStyle.borderColorDark,
-                ),
-              ),
-            ),
-            focusedErrorBorder: const OutlineInputBorder(
-              borderRadius: MegaStyle.borderRadius,
-              borderSide: BorderSide(color: MegaStyle.errorColor),
-            ),
-            errorBorder: const OutlineInputBorder(
-              borderRadius: MegaStyle.borderRadius,
-              borderSide: BorderSide(color: MegaStyle.errorColor),
-            ),
-            errorStyle: const TextStyle(height: 0, color: Colors.transparent),
           ),
         ),
       ),

@@ -1,3 +1,7 @@
+## 0.0.4
+
+- add MegaThemes
+
 ## 0.0.3+1
 
 - add MegaTextField 
