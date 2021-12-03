@@ -1,3 +1,7 @@
+## 0.0.5
+
+- add MegaTextButton and MegaLinkedTextButton
+
 ## 0.0.4+1
 
 - fix paddings
