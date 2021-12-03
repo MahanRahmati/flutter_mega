@@ -1,3 +1,7 @@
+## 0.0.6+1
+
+- add MegaButton and MegaLinkedButton
+
 ## 0.0.6
 
 - add MegaButton and MegaLinkedButton
