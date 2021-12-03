@@ -1,3 +1,7 @@
+## 0.0.5+1
+
+- fix alignment
+
 ## 0.0.5
 
 - add MegaTextButton and MegaLinkedTextButton

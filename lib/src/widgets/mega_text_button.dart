@@ -75,7 +75,13 @@ class _MegaTextButtonState extends State<MegaTextButton> {
                           ),
           ),
           padding: MegaStyle.horizontal,
-          child: Text(widget.text, style: Theme.of(context).textTheme.button),
+          child: Align(
+            alignment: Alignment.center,
+            child: Text(
+              widget.text,
+              style: Theme.of(context).textTheme.button,
+            ),
+          ),
         ),
       ),
     );
