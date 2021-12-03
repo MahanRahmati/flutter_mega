@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:mega/src/styles/mega_styles.dart';
 import 'package:mega/src/utils/theme_picker.dart';
 
-class MegaTextButton extends StatefulWidget {
+class MegaButton extends StatefulWidget {
   final String text;
+  final IconData icon;
   final bool isActive;
   final FocusNode? focusNode;
   final bool? autofocus;
   final VoidCallback? onPressed;
 
-  const MegaTextButton({
+  const MegaButton({
     Key? key,
     required this.text,
+    required this.icon,
     this.isActive = false,
     this.focusNode,
     this.autofocus = false,
@@ -19,10 +21,10 @@ class MegaTextButton extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _MegaTextButtonState createState() => _MegaTextButtonState();
+  _MegaButtonState createState() => _MegaButtonState();
 }
 
-class _MegaTextButtonState extends State<MegaTextButton> {
+class _MegaButtonState extends State<MegaButton> {
   bool hovering = false;
   bool disabled = true;
 
@@ -75,19 +77,39 @@ class _MegaTextButtonState extends State<MegaTextButton> {
                           ),
           ),
           padding: MegaStyle.horizontal,
-          child: Align(
-            alignment: Alignment.center,
-            child: Text(
-              widget.text,
-              style: disabled
-                  ? Theme.of(context).textTheme.button!.copyWith(
-                        color: ThemePicker.of(context).pick(
+          child: Row(
+            children: [
+              Padding(
+                padding: MegaStyle.right,
+                child: Icon(
+                  widget.icon,
+                  size: MegaStyle.iconSize,
+                  color: disabled
+                      ? ThemePicker.of(context).pick(
                           light: MegaStyle.iconColorDisabledLight,
                           dark: MegaStyle.iconColorDisabledDark,
+                        )
+                      : ThemePicker.of(context).pick(
+                          light: MegaStyle.iconColorLight,
+                          dark: MegaStyle.iconColorDark,
                         ),
-                      )
-                  : Theme.of(context).textTheme.button,
-            ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  widget.text,
+                  style: disabled
+                      ? Theme.of(context).textTheme.button!.copyWith(
+                            color: ThemePicker.of(context).pick(
+                              light: MegaStyle.iconColorDisabledLight,
+                              dark: MegaStyle.iconColorDisabledDark,
+                            ),
+                          )
+                      : Theme.of(context).textTheme.button,
+                ),
+              ),
+            ],
           ),
         ),
       ),

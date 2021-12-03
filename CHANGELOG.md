@@ -1,3 +1,8 @@
+## 0.0.6
+
+- add MegaButton and MegaLinkedButton
+- fix disabled text color
+
 ## 0.0.5+1
 
 - fix alignment

@@ -2,7 +2,7 @@ name: mega
 description: Mega widgets and themes for Flutter.
 homepage: https://github.com/MahanRahmati/flutter_mega
 
-version: 0.0.5+1
+version: 0.0.6
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

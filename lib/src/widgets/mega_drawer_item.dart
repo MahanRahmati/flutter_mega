@@ -91,7 +91,17 @@ class _MegaDrawerItemState extends State<MegaDrawerItem> {
                             ),
                     ),
                   ),
-                  Text(widget.title),
+                  Text(
+                    widget.title,
+                    style: disabled
+                        ? Theme.of(context).textTheme.subtitle1!.copyWith(
+                              color: ThemePicker.of(context).pick(
+                                light: MegaStyle.iconColorDisabledLight,
+                                dark: MegaStyle.iconColorDisabledDark,
+                              ),
+                            )
+                        : Theme.of(context).textTheme.subtitle1,
+                  ),
                   const Spacer(),
                   if (widget.trailing != null) widget.trailing!,
                 ],
