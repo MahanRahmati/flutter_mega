@@ -43,8 +43,8 @@ class _MegaLinkedIconButtonState extends State<MegaLinkedIconButton> {
         decoration: BoxDecoration(
           color: disabled
               ? ThemePicker.of(context).pick(
-                  light: MegaStyle.backgroundColorLight,
-                  dark: MegaStyle.backgroundColorDark,
+                  light: MegaStyle.backgroundColorDisabledLight,
+                  dark: MegaStyle.backgroundColorDisabledDark,
                 )
               : widget.isActive
                   ? ThemePicker.of(context).pick(

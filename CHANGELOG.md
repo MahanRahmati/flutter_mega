@@ -1,3 +1,7 @@
+## 0.0.7
+
+- add BackgroundColorDisabled
+
 ## 0.0.6+1
 
 - add MegaButton and MegaLinkedButton

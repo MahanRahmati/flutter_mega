@@ -44,20 +44,15 @@ class _MegaTextButtonState extends State<MegaTextButton> {
           decoration: BoxDecoration(
             borderRadius: MegaStyle.borderRadius,
             border: Border.all(
-              color: disabled
-                  ? ThemePicker.of(context).pick(
-                      light: MegaStyle.backgroundColorLight,
-                      dark: MegaStyle.backgroundColorDark,
-                    )
-                  : ThemePicker.of(context).pick(
-                      light: MegaStyle.borderColorLight,
-                      dark: MegaStyle.borderColorDark,
-                    ),
+              color: ThemePicker.of(context).pick(
+                light: MegaStyle.borderColorLight,
+                dark: MegaStyle.borderColorDark,
+              ),
             ),
             color: disabled
                 ? ThemePicker.of(context).pick(
-                    light: MegaStyle.backgroundColorLight,
-                    dark: MegaStyle.backgroundColorDark,
+                    light: MegaStyle.backgroundColorDisabledLight,
+                    dark: MegaStyle.backgroundColorDisabledDark,
                   )
                 : widget.isActive
                     ? ThemePicker.of(context).pick(

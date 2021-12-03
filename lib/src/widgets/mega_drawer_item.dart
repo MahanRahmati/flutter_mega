@@ -54,8 +54,8 @@ class _MegaDrawerItemState extends State<MegaDrawerItem> {
                 borderRadius: MegaStyle.borderRadius,
                 color: disabled
                     ? ThemePicker.of(context).pick(
-                        light: MegaStyle.backgroundColorLight,
-                        dark: MegaStyle.backgroundColorDark,
+                        light: MegaStyle.backgroundColorDisabledLight,
+                        dark: MegaStyle.backgroundColorDisabledDark,
                       )
                     : widget.isActive
                         ? ThemePicker.of(context).pick(
@@ -100,7 +100,12 @@ class _MegaDrawerItemState extends State<MegaDrawerItem> {
                                 dark: MegaStyle.iconColorDisabledDark,
                               ),
                             )
-                        : Theme.of(context).textTheme.subtitle1,
+                        : Theme.of(context).textTheme.subtitle1!.copyWith(
+                              color: ThemePicker.of(context).pick(
+                                light: MegaStyle.primaryTextColorLight,
+                                dark: MegaStyle.primaryTextColorDark,
+                              ),
+                            ),
                   ),
                   const Spacer(),
                   if (widget.trailing != null) widget.trailing!,
