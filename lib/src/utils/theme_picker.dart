@@ -9,11 +9,6 @@ class ThemePicker {
 
   factory ThemePicker.of(BuildContext context) => ThemePicker._(context);
 
-  T pick<T>({required T light, required T dark}) {
-    if (Theme.of(context).brightness == Brightness.light) {
-      return light;
-    } else {
-      return dark;
-    }
-  }
+  T pick<T>({required T light, required T dark}) =>
+      Theme.of(context).brightness == Brightness.light ? light : dark;
 }

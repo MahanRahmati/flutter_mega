@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:mega/src/styles/mega_styles.dart';
 import 'package:mega/src/utils/theme_picker.dart';
 
-class MegaIconButton extends StatefulWidget {
+class MegaLinkedIconButton extends StatefulWidget {
   final IconData icon;
   final bool isActive;
   final FocusNode? focusNode;
   final bool? autofocus;
   final VoidCallback? onPressed;
 
-  const MegaIconButton({
+  const MegaLinkedIconButton({
     Key? key,
     required this.icon,
     this.isActive = false,
@@ -19,10 +19,10 @@ class MegaIconButton extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _MegaIconButtonState createState() => _MegaIconButtonState();
+  _MegaLinkedIconButtonState createState() => _MegaLinkedIconButtonState();
 }
 
-class _MegaIconButtonState extends State<MegaIconButton> {
+class _MegaLinkedIconButtonState extends State<MegaLinkedIconButton> {
   bool hovering = false;
   bool disabled = true;
 
@@ -32,7 +32,7 @@ class _MegaIconButtonState extends State<MegaIconButton> {
     return InkWell(
       onTap: widget.onPressed,
       onHover: (hover) => setState(() => hovering = hover),
-      borderRadius: MegaStyle.borderRadius,
+      borderRadius: const BorderRadius.all(Radius.circular(5.0)),
       focusNode: widget.focusNode,
       autofocus: widget.autofocus ?? false,
       child: AnimatedContainer(
@@ -41,18 +41,6 @@ class _MegaIconButtonState extends State<MegaIconButton> {
         duration: MegaStyle.basicDuration,
         curve: MegaStyle.basicCurve,
         decoration: BoxDecoration(
-          borderRadius: MegaStyle.borderRadius,
-          border: Border.all(
-            color: disabled
-                ? ThemePicker.of(context).pick(
-                    light: MegaStyle.backgroundColorLight,
-                    dark: MegaStyle.backgroundColorDark,
-                  )
-                : ThemePicker.of(context).pick(
-                    light: MegaStyle.borderColorLight,
-                    dark: MegaStyle.borderColorDark,
-                  ),
-          ),
           color: disabled
               ? ThemePicker.of(context).pick(
                   light: MegaStyle.backgroundColorLight,

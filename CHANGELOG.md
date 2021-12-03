@@ -1,3 +1,9 @@
+## 0.0.3
+
+- add MegaDrawerItem,MegaHeaderBar,MegaLinkedButtons,MegaLinkedIconButton and MegaTextField
+- add MegaStyle and remove MegaColor
+- update ThemePicker
+
 ## 0.0.2
 
 - convert MegaHeaderButton to MegaIconButton and add MegaDrawerItem
