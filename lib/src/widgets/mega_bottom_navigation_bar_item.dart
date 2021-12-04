@@ -2,21 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:mega/src/styles/mega_styles.dart';
 import 'package:mega/src/utils/theme_picker.dart';
 
-class MegaDrawerItem extends StatefulWidget {
+class MegaBottomNavigationBarItem extends StatefulWidget {
   final IconData icon;
   final String title;
-  final Widget? trailing;
   final Color accentColor;
   final bool isActive;
   final FocusNode? focusNode;
   final bool? autofocus;
   final VoidCallback? onPressed;
 
-  const MegaDrawerItem({
+  const MegaBottomNavigationBarItem({
     Key? key,
     required this.icon,
     required this.title,
-    this.trailing,
     required this.accentColor,
     this.isActive = false,
     this.focusNode,
@@ -25,10 +23,12 @@ class MegaDrawerItem extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _MegaDrawerItemState createState() => _MegaDrawerItemState();
+  _MegaBottomNavigationBarItemState createState() =>
+      _MegaBottomNavigationBarItemState();
 }
 
-class _MegaDrawerItemState extends State<MegaDrawerItem> {
+class _MegaBottomNavigationBarItemState
+    extends State<MegaBottomNavigationBarItem> {
   bool hovering = false;
   bool disabled = true;
 
@@ -38,7 +38,7 @@ class _MegaDrawerItemState extends State<MegaDrawerItem> {
     return Padding(
       padding: MegaStyle.small,
       child: Stack(
-        alignment: Alignment.centerLeft,
+        alignment: Alignment.bottomCenter,
         children: [
           InkWell(
             onTap: widget.onPressed,
@@ -107,15 +107,13 @@ class _MegaDrawerItemState extends State<MegaDrawerItem> {
                               ),
                             ),
                   ),
-                  const Spacer(),
-                  if (widget.trailing != null) widget.trailing!,
                 ],
               ),
             ),
           ),
           AnimatedContainer(
-            height: widget.isActive ? MegaStyle.iconSize : 0,
-            width: MegaStyle.halfPadding,
+            height: MegaStyle.halfPadding,
+            width: widget.isActive ? MegaStyle.iconSize : 0,
             duration: MegaStyle.basicDuration,
             curve: MegaStyle.basicCurve,
             decoration: BoxDecoration(

@@ -2,21 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:mega/src/styles/mega_styles.dart';
 import 'package:mega/src/utils/theme_picker.dart';
 
-class MegaDrawerItem extends StatefulWidget {
+class MegaDrawerCompactItem extends StatefulWidget {
   final IconData icon;
-  final String title;
-  final Widget? trailing;
   final Color accentColor;
   final bool isActive;
   final FocusNode? focusNode;
   final bool? autofocus;
   final VoidCallback? onPressed;
 
-  const MegaDrawerItem({
+  const MegaDrawerCompactItem({
     Key? key,
     required this.icon,
-    required this.title,
-    this.trailing,
     required this.accentColor,
     this.isActive = false,
     this.focusNode,
@@ -25,10 +21,10 @@ class MegaDrawerItem extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _MegaDrawerItemState createState() => _MegaDrawerItemState();
+  _MegaDrawerCompactItemState createState() => _MegaDrawerCompactItemState();
 }
 
-class _MegaDrawerItemState extends State<MegaDrawerItem> {
+class _MegaDrawerCompactItemState extends State<MegaDrawerCompactItem> {
   bool hovering = false;
   bool disabled = true;
 
@@ -48,6 +44,7 @@ class _MegaDrawerItemState extends State<MegaDrawerItem> {
             autofocus: widget.autofocus ?? false,
             child: AnimatedContainer(
               height: MegaStyle.buttonSize,
+              width: MegaStyle.buttonSize,
               duration: MegaStyle.basicDuration,
               curve: MegaStyle.basicCurve,
               decoration: BoxDecoration(
@@ -73,43 +70,18 @@ class _MegaDrawerItemState extends State<MegaDrawerItem> {
                               ),
               ),
               padding: MegaStyle.horizontal,
-              child: Row(
-                children: [
-                  Padding(
-                    padding: MegaStyle.right,
-                    child: Icon(
-                      widget.icon,
-                      size: MegaStyle.iconSize,
-                      color: disabled
-                          ? ThemePicker.of(context).pick(
-                              light: MegaStyle.iconColorDisabledLight,
-                              dark: MegaStyle.iconColorDisabledDark,
-                            )
-                          : ThemePicker.of(context).pick(
-                              light: MegaStyle.iconColorLight,
-                              dark: MegaStyle.iconColorDark,
-                            ),
-                    ),
-                  ),
-                  Text(
-                    widget.title,
-                    style: disabled
-                        ? Theme.of(context).textTheme.subtitle1!.copyWith(
-                              color: ThemePicker.of(context).pick(
-                                light: MegaStyle.iconColorDisabledLight,
-                                dark: MegaStyle.iconColorDisabledDark,
-                              ),
-                            )
-                        : Theme.of(context).textTheme.subtitle1!.copyWith(
-                              color: ThemePicker.of(context).pick(
-                                light: MegaStyle.primaryTextColorLight,
-                                dark: MegaStyle.primaryTextColorDark,
-                              ),
-                            ),
-                  ),
-                  const Spacer(),
-                  if (widget.trailing != null) widget.trailing!,
-                ],
+              child: Icon(
+                widget.icon,
+                size: MegaStyle.iconSize,
+                color: disabled
+                    ? ThemePicker.of(context).pick(
+                        light: MegaStyle.iconColorDisabledLight,
+                        dark: MegaStyle.iconColorDisabledDark,
+                      )
+                    : ThemePicker.of(context).pick(
+                        light: MegaStyle.iconColorLight,
+                        dark: MegaStyle.iconColorDark,
+                      ),
               ),
             ),
           ),

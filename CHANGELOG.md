@@ -1,3 +1,9 @@
+## 0.0.9
+
+- add MegaDrawerCompactItem
+- add MegaBottomNavigationBarItem
+- add MegaBottomNavigationBarCompactItem
+
 ## 0.0.8+1
 
 - fix cardBackgroundColorDark
