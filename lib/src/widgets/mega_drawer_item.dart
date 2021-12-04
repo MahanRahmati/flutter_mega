@@ -54,8 +54,8 @@ class _MegaDrawerItemState extends State<MegaDrawerItem> {
                 borderRadius: MegaStyle.borderRadius,
                 color: disabled
                     ? ThemePicker.of(context).pick(
-                        light: MegaStyle.backgroundColorDisabledLight,
-                        dark: MegaStyle.backgroundColorDisabledDark,
+                        light: MegaStyle.backgroundColorLight,
+                        dark: MegaStyle.backgroundColorDark,
                       )
                     : widget.isActive
                         ? ThemePicker.of(context).pick(

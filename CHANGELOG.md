@@ -1,3 +1,7 @@
+## 0.0.8
+
+- add MegaCard,MegaHorizontalDivider and MegaVerticalDivider
+
 ## 0.0.7
 
 - add BackgroundColorDisabled
