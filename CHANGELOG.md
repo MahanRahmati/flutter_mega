@@ -1,3 +1,7 @@
+## 0.0.8+1
+
+- fix cardBackgroundColorDark
+
 ## 0.0.8
 
 - add MegaCard,MegaHorizontalDivider and MegaVerticalDivider

@@ -13,7 +13,7 @@ abstract class MegaStyle {
 
   // CardBackgroundColor
   static const Color cardBackgroundColorLight = Color(0xFFFFFFFF);
-  static const Color cardBackgroundColorDark = Color(0xFFD4D4D4);
+  static const Color cardBackgroundColorDark = Color(0xFF303030);
   
   // PrimaryTextColor
   static const Color primaryTextColorLight = Color(0xFF2E3436);
