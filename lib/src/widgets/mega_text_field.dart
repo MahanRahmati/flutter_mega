@@ -3,35 +3,35 @@ import 'package:mega/src/styles/mega_styles.dart';
 import 'package:mega/src/utils/theme_picker.dart';
 
 class MegaTextField extends StatelessWidget {
-  final bool? enabled;
+  final bool enabled;
   final String? initialValue;
   final TextEditingController? controller;
   final String? hint;
   final IconData prefixIcon;
   final IconData? suffixIcon;
-  final bool? obscureText;
+  final bool obscureText;
   final Color accentColor;
   final FocusNode? focusNode;
-  final bool? autofocus;
+  final bool autofocus;
   final TextInputType? keyboardType;
-  final int? maxLines;
+  final int maxLines;
   final void Function(String)? onChanged;
   final VoidCallback? onSuffixIconPressed;
 
   const MegaTextField({
     Key? key,
-    this.enabled,
+    this.enabled = true,
     this.initialValue,
     this.controller,
     this.hint,
     required this.prefixIcon,
     this.suffixIcon,
-    this.obscureText,
+    this.obscureText = false,
     required this.accentColor,
     this.focusNode,
     this.autofocus = false,
     this.keyboardType,
-    this.maxLines,
+    this.maxLines = 1,
     this.onChanged,
     this.onSuffixIconPressed,
   }) : super(key: key);
@@ -43,15 +43,15 @@ class MegaTextField extends StatelessWidget {
       child: SizedBox(
         height: MegaStyle.buttonSize,
         child: TextFormField(
-          enabled: enabled ?? true,
+          enabled: enabled,
           initialValue: initialValue,
           controller: controller,
-          obscureText: obscureText ?? false,
+          obscureText: obscureText,
           focusNode: focusNode,
-          autofocus: autofocus ?? false,
+          autofocus: autofocus,
           keyboardType: keyboardType,
           cursorColor: accentColor,
-          maxLines: maxLines ?? 1,
+          maxLines: maxLines,
           onChanged: onChanged,
           decoration: InputDecoration(
             hintText: hint,

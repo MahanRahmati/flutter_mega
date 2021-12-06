@@ -4,15 +4,15 @@ import 'package:mega/src/utils/theme_picker.dart';
 
 class MegaTextButton extends StatefulWidget {
   final String text;
-  final bool isActive;
+  final bool selected;
   final FocusNode? focusNode;
-  final bool? autofocus;
+  final bool autofocus;
   final VoidCallback? onPressed;
 
   const MegaTextButton({
     Key? key,
     required this.text,
-    this.isActive = false,
+    this.selected = false,
     this.focusNode,
     this.autofocus = false,
     required this.onPressed,
@@ -32,11 +32,11 @@ class _MegaTextButtonState extends State<MegaTextButton> {
     return Padding(
       padding: MegaStyle.hHorizontal,
       child: InkWell(
+        focusNode: widget.focusNode,
+        autofocus: widget.autofocus,
         onTap: widget.onPressed,
         onHover: (hover) => setState(() => hovering = hover),
         borderRadius: MegaStyle.borderRadius,
-        focusNode: widget.focusNode,
-        autofocus: widget.autofocus ?? false,
         child: AnimatedContainer(
           height: MegaStyle.buttonSize,
           duration: MegaStyle.basicDuration,
@@ -54,7 +54,7 @@ class _MegaTextButtonState extends State<MegaTextButton> {
                     light: MegaStyle.backgroundColorDisabledLight,
                     dark: MegaStyle.backgroundColorDisabledDark,
                   )
-                : widget.isActive
+                : widget.selected
                     ? ThemePicker.of(context).pick(
                         light: MegaStyle.hoverColorLight,
                         dark: MegaStyle.hoverColorDark,

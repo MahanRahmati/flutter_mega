@@ -5,20 +5,20 @@ import 'package:mega/src/utils/theme_picker.dart';
 class MegaDrawerItem extends StatefulWidget {
   final IconData icon;
   final String title;
-  final Widget? trailing;
+  final Widget trailing;
   final Color accentColor;
-  final bool isActive;
+  final bool selected;
   final FocusNode? focusNode;
-  final bool? autofocus;
+  final bool autofocus;
   final VoidCallback? onPressed;
 
   const MegaDrawerItem({
     Key? key,
     required this.icon,
     required this.title,
-    this.trailing,
+    this.trailing = const SizedBox(),
     required this.accentColor,
-    this.isActive = false,
+    this.selected = false,
     this.focusNode,
     this.autofocus = false,
     required this.onPressed,
@@ -30,47 +30,40 @@ class MegaDrawerItem extends StatefulWidget {
 
 class _MegaDrawerItemState extends State<MegaDrawerItem> {
   bool hovering = false;
-  bool disabled = true;
 
   @override
   Widget build(BuildContext context) {
-    if (widget.onPressed != null) disabled = false;
     return Padding(
       padding: MegaStyle.small,
       child: Stack(
         alignment: Alignment.centerLeft,
         children: [
           InkWell(
+            focusNode: widget.focusNode,
+            autofocus: widget.autofocus,
             onTap: widget.onPressed,
             onHover: (hover) => setState(() => hovering = hover),
             borderRadius: MegaStyle.borderRadius,
-            focusNode: widget.focusNode,
-            autofocus: widget.autofocus ?? false,
             child: AnimatedContainer(
               height: MegaStyle.buttonSize,
               duration: MegaStyle.basicDuration,
               curve: MegaStyle.basicCurve,
               decoration: BoxDecoration(
                 borderRadius: MegaStyle.borderRadius,
-                color: disabled
+                color: widget.selected
                     ? ThemePicker.of(context).pick(
-                        light: MegaStyle.backgroundColorLight,
-                        dark: MegaStyle.backgroundColorDark,
+                        light: MegaStyle.hoverColorLight,
+                        dark: MegaStyle.hoverColorDark,
                       )
-                    : widget.isActive
+                    : hovering
                         ? ThemePicker.of(context).pick(
                             light: MegaStyle.hoverColorLight,
                             dark: MegaStyle.hoverColorDark,
                           )
-                        : hovering
-                            ? ThemePicker.of(context).pick(
-                                light: MegaStyle.hoverColorLight,
-                                dark: MegaStyle.hoverColorDark,
-                              )
-                            : ThemePicker.of(context).pick(
-                                light: MegaStyle.backgroundColorLight,
-                                dark: MegaStyle.backgroundColorDark,
-                              ),
+                        : ThemePicker.of(context).pick(
+                            light: MegaStyle.backgroundColorLight,
+                            dark: MegaStyle.backgroundColorDark,
+                          ),
               ),
               padding: MegaStyle.horizontal,
               child: Row(
@@ -80,41 +73,29 @@ class _MegaDrawerItemState extends State<MegaDrawerItem> {
                     child: Icon(
                       widget.icon,
                       size: MegaStyle.iconSize,
-                      color: disabled
-                          ? ThemePicker.of(context).pick(
-                              light: MegaStyle.iconColorDisabledLight,
-                              dark: MegaStyle.iconColorDisabledDark,
-                            )
-                          : ThemePicker.of(context).pick(
-                              light: MegaStyle.iconColorLight,
-                              dark: MegaStyle.iconColorDark,
-                            ),
+                      color: ThemePicker.of(context).pick(
+                        light: MegaStyle.iconColorLight,
+                        dark: MegaStyle.iconColorDark,
+                      ),
                     ),
                   ),
                   Text(
                     widget.title,
-                    style: disabled
-                        ? Theme.of(context).textTheme.subtitle1!.copyWith(
-                              color: ThemePicker.of(context).pick(
-                                light: MegaStyle.iconColorDisabledLight,
-                                dark: MegaStyle.iconColorDisabledDark,
-                              ),
-                            )
-                        : Theme.of(context).textTheme.subtitle1!.copyWith(
-                              color: ThemePicker.of(context).pick(
-                                light: MegaStyle.primaryTextColorLight,
-                                dark: MegaStyle.primaryTextColorDark,
-                              ),
-                            ),
+                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                          color: ThemePicker.of(context).pick(
+                            light: MegaStyle.primaryTextColorLight,
+                            dark: MegaStyle.primaryTextColorDark,
+                          ),
+                        ),
                   ),
                   const Spacer(),
-                  if (widget.trailing != null) widget.trailing!,
+                  widget.trailing,
                 ],
               ),
             ),
           ),
           AnimatedContainer(
-            height: widget.isActive ? MegaStyle.iconSize : 0,
+            height: widget.selected ? MegaStyle.iconSize : 0,
             width: MegaStyle.halfPadding,
             duration: MegaStyle.basicDuration,
             curve: MegaStyle.basicCurve,

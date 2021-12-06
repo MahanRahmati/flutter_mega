@@ -5,19 +5,21 @@ import 'package:mega/src/utils/theme_picker.dart';
 class MegaBottomNavigationBarCompactItem extends StatefulWidget {
   final IconData icon;
   final Color accentColor;
-  final bool isActive;
+  final bool selected;
   final FocusNode? focusNode;
-  final bool? autofocus;
-  final VoidCallback? onPressed;
+  final bool autofocus;
+  final ValueChanged<int> onTap;
+  final int index;
 
   const MegaBottomNavigationBarCompactItem({
     Key? key,
     required this.icon,
     required this.accentColor,
-    this.isActive = false,
+    this.selected = false,
     this.focusNode,
     this.autofocus = false,
-    required this.onPressed,
+    required this.onTap,
+    required this.index,
   }) : super(key: key);
 
   @override
@@ -28,22 +30,20 @@ class MegaBottomNavigationBarCompactItem extends StatefulWidget {
 class _MegaBottomNavigationBarCompactItemState
     extends State<MegaBottomNavigationBarCompactItem> {
   bool hovering = false;
-  bool disabled = true;
 
   @override
   Widget build(BuildContext context) {
-    if (widget.onPressed != null) disabled = false;
     return Padding(
       padding: MegaStyle.small,
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           InkWell(
-            onTap: widget.onPressed,
+            onTap: () => widget.onTap(widget.index),
+            focusNode: widget.focusNode,
+            autofocus: widget.autofocus,
             onHover: (hover) => setState(() => hovering = hover),
             borderRadius: MegaStyle.borderRadius,
-            focusNode: widget.focusNode,
-            autofocus: widget.autofocus ?? false,
             child: AnimatedContainer(
               height: MegaStyle.buttonSize,
               width: MegaStyle.buttonSize,
@@ -51,45 +51,35 @@ class _MegaBottomNavigationBarCompactItemState
               curve: MegaStyle.basicCurve,
               decoration: BoxDecoration(
                 borderRadius: MegaStyle.borderRadius,
-                color: disabled
+                color: widget.selected
                     ? ThemePicker.of(context).pick(
-                        light: MegaStyle.backgroundColorLight,
-                        dark: MegaStyle.backgroundColorDark,
+                        light: MegaStyle.hoverColorLight,
+                        dark: MegaStyle.hoverColorDark,
                       )
-                    : widget.isActive
+                    : hovering
                         ? ThemePicker.of(context).pick(
                             light: MegaStyle.hoverColorLight,
                             dark: MegaStyle.hoverColorDark,
                           )
-                        : hovering
-                            ? ThemePicker.of(context).pick(
-                                light: MegaStyle.hoverColorLight,
-                                dark: MegaStyle.hoverColorDark,
-                              )
-                            : ThemePicker.of(context).pick(
-                                light: MegaStyle.backgroundColorLight,
-                                dark: MegaStyle.backgroundColorDark,
-                              ),
+                        : ThemePicker.of(context).pick(
+                            light: MegaStyle.backgroundColorLight,
+                            dark: MegaStyle.backgroundColorDark,
+                          ),
               ),
               padding: MegaStyle.horizontal,
               child: Icon(
                 widget.icon,
                 size: MegaStyle.iconSize,
-                color: disabled
-                    ? ThemePicker.of(context).pick(
-                        light: MegaStyle.iconColorDisabledLight,
-                        dark: MegaStyle.iconColorDisabledDark,
-                      )
-                    : ThemePicker.of(context).pick(
-                        light: MegaStyle.iconColorLight,
-                        dark: MegaStyle.iconColorDark,
-                      ),
+                color: ThemePicker.of(context).pick(
+                  light: MegaStyle.iconColorLight,
+                  dark: MegaStyle.iconColorDark,
+                ),
               ),
             ),
           ),
           AnimatedContainer(
             height: MegaStyle.halfPadding,
-            width: widget.isActive ? MegaStyle.iconSize : 0,
+            width: widget.selected ? MegaStyle.iconSize : 0,
             duration: MegaStyle.basicDuration,
             curve: MegaStyle.basicCurve,
             decoration: BoxDecoration(

@@ -1,3 +1,13 @@
+## 0.0.10
+
+- fix MegaHorizontalDivider and MegaVerticalDivider
+- add divider to MegaLinkedButtons
+- add paddings to MegaCard
+- add MegaHorizontalSeparator and MegaVerticalSeparator
+- add MegaBottomNavigationBar
+- add MegaScaffold
+- cleanup code
+
 ## 0.0.9
 
 - add MegaDrawerCompactItem

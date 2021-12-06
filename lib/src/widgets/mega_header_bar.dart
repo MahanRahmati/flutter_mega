@@ -45,11 +45,7 @@ class MegaHeaderBar extends StatelessWidget {
           padding: MegaStyle.horizontal,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              leading,
-              center,
-              trailing,
-            ],
+            children: [leading, center, trailing],
           ),
         ),
       ),

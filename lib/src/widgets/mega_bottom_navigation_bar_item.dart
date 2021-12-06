@@ -6,20 +6,22 @@ class MegaBottomNavigationBarItem extends StatefulWidget {
   final IconData icon;
   final String title;
   final Color accentColor;
-  final bool isActive;
+  final bool selected;
   final FocusNode? focusNode;
-  final bool? autofocus;
-  final VoidCallback? onPressed;
+  final bool autofocus;
+  final ValueChanged<int> onTap;
+  final int index;
 
   const MegaBottomNavigationBarItem({
     Key? key,
     required this.icon,
     required this.title,
     required this.accentColor,
-    this.isActive = false,
+    this.selected = false,
     this.focusNode,
     this.autofocus = false,
-    required this.onPressed,
+    required this.onTap,
+    required this.index,
   }) : super(key: key);
 
   @override
@@ -30,47 +32,40 @@ class MegaBottomNavigationBarItem extends StatefulWidget {
 class _MegaBottomNavigationBarItemState
     extends State<MegaBottomNavigationBarItem> {
   bool hovering = false;
-  bool disabled = true;
 
   @override
   Widget build(BuildContext context) {
-    if (widget.onPressed != null) disabled = false;
     return Padding(
       padding: MegaStyle.small,
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
           InkWell(
-            onTap: widget.onPressed,
+            onTap: () => widget.onTap(widget.index),
+            focusNode: widget.focusNode,
+            autofocus: widget.autofocus,
             onHover: (hover) => setState(() => hovering = hover),
             borderRadius: MegaStyle.borderRadius,
-            focusNode: widget.focusNode,
-            autofocus: widget.autofocus ?? false,
             child: AnimatedContainer(
               height: MegaStyle.buttonSize,
               duration: MegaStyle.basicDuration,
               curve: MegaStyle.basicCurve,
               decoration: BoxDecoration(
                 borderRadius: MegaStyle.borderRadius,
-                color: disabled
+                color: widget.selected
                     ? ThemePicker.of(context).pick(
-                        light: MegaStyle.backgroundColorLight,
-                        dark: MegaStyle.backgroundColorDark,
+                        light: MegaStyle.hoverColorLight,
+                        dark: MegaStyle.hoverColorDark,
                       )
-                    : widget.isActive
+                    : hovering
                         ? ThemePicker.of(context).pick(
                             light: MegaStyle.hoverColorLight,
                             dark: MegaStyle.hoverColorDark,
                           )
-                        : hovering
-                            ? ThemePicker.of(context).pick(
-                                light: MegaStyle.hoverColorLight,
-                                dark: MegaStyle.hoverColorDark,
-                              )
-                            : ThemePicker.of(context).pick(
-                                light: MegaStyle.backgroundColorLight,
-                                dark: MegaStyle.backgroundColorDark,
-                              ),
+                        : ThemePicker.of(context).pick(
+                            light: MegaStyle.backgroundColorLight,
+                            dark: MegaStyle.backgroundColorDark,
+                          ),
               ),
               padding: MegaStyle.horizontal,
               child: Row(
@@ -80,32 +75,20 @@ class _MegaBottomNavigationBarItemState
                     child: Icon(
                       widget.icon,
                       size: MegaStyle.iconSize,
-                      color: disabled
-                          ? ThemePicker.of(context).pick(
-                              light: MegaStyle.iconColorDisabledLight,
-                              dark: MegaStyle.iconColorDisabledDark,
-                            )
-                          : ThemePicker.of(context).pick(
-                              light: MegaStyle.iconColorLight,
-                              dark: MegaStyle.iconColorDark,
-                            ),
+                      color: ThemePicker.of(context).pick(
+                        light: MegaStyle.iconColorLight,
+                        dark: MegaStyle.iconColorDark,
+                      ),
                     ),
                   ),
                   Text(
                     widget.title,
-                    style: disabled
-                        ? Theme.of(context).textTheme.subtitle1!.copyWith(
-                              color: ThemePicker.of(context).pick(
-                                light: MegaStyle.iconColorDisabledLight,
-                                dark: MegaStyle.iconColorDisabledDark,
-                              ),
-                            )
-                        : Theme.of(context).textTheme.subtitle1!.copyWith(
-                              color: ThemePicker.of(context).pick(
-                                light: MegaStyle.primaryTextColorLight,
-                                dark: MegaStyle.primaryTextColorDark,
-                              ),
-                            ),
+                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                          color: ThemePicker.of(context).pick(
+                            light: MegaStyle.primaryTextColorLight,
+                            dark: MegaStyle.primaryTextColorDark,
+                          ),
+                        ),
                   ),
                 ],
               ),
@@ -113,7 +96,7 @@ class _MegaBottomNavigationBarItemState
           ),
           AnimatedContainer(
             height: MegaStyle.halfPadding,
-            width: widget.isActive ? MegaStyle.iconSize : 0,
+            width: widget.selected ? MegaStyle.iconSize : 0,
             duration: MegaStyle.basicDuration,
             curve: MegaStyle.basicCurve,
             decoration: BoxDecoration(
