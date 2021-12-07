@@ -14,7 +14,7 @@ abstract class MegaStyle {
   // CardBackgroundColor
   static const Color cardBackgroundColorLight = Color(0xFFFFFFFF);
   static const Color cardBackgroundColorDark = Color(0xFF303030);
-  
+
   // PrimaryTextColor
   static const Color primaryTextColorLight = Color(0xFF2E3436);
   static const Color primaryTextColorDark = Color(0xFFE5E5E5);
@@ -80,9 +80,7 @@ abstract class MegaStyle {
   static const EdgeInsets horizontal = EdgeInsets.symmetric(
     horizontal: padding,
   );
-  static const EdgeInsets vertical = EdgeInsets.symmetric(
-    vertical: padding,
-  );
+  static const EdgeInsets vertical = EdgeInsets.symmetric(vertical: padding);
   static const EdgeInsets hHorizontal = EdgeInsets.symmetric(
     horizontal: halfPadding,
   );

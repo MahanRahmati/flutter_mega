@@ -2,25 +2,17 @@ import 'package:flutter/widgets.dart';
 import 'package:mega/src/styles/mega_styles.dart';
 import 'package:mega/src/utils/theme_picker.dart';
 
-class MegaCard extends StatelessWidget {
+class MegaStatusBar extends StatelessWidget {
   final Widget child;
-  final double? height;
-  final double? width;
 
-  const MegaCard({
-    Key? key,
-    required this.child,
-    this.height,
-    this.width,
-  }) : super(key: key);
+  const MegaStatusBar({Key? key, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: MegaStyle.small,
       child: Container(
-        height: height,
-        width: width,
+        height: MegaStyle.buttonSize,
         decoration: BoxDecoration(
           borderRadius: MegaStyle.borderRadius,
           border: Border.all(
@@ -30,8 +22,8 @@ class MegaCard extends StatelessWidget {
             ),
           ),
           color: ThemePicker.of(context).pick(
-            light: MegaStyle.cardBackgroundColorLight,
-            dark: MegaStyle.cardBackgroundColorDark,
+            light: MegaStyle.backgroundColorDark,
+            dark: MegaStyle.backgroundColorLight,
           ),
         ),
         child: child,

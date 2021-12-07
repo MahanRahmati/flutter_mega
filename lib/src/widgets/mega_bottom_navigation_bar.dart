@@ -100,7 +100,7 @@ class MegaBottomNavigationItem {
   MegaBottomNavigationItem({
     required this.icon,
     required this.title,
-    required this.accentColor,
+    this.accentColor = MegaStyle.accentColor1,
     this.focusNode,
     this.autofocus = false,
   });

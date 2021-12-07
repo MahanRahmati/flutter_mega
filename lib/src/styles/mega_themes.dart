@@ -7,16 +7,6 @@ class MegaThemes {
           secondary: MegaStyle.accentColor1,
         ),
     scaffoldBackgroundColor: MegaStyle.backgroundColorLight,
-    cardTheme: CardTheme(
-      color: MegaStyle.cardBackgroundColorLight,
-      clipBehavior: Clip.antiAlias,
-      elevation: 0,
-      margin: const EdgeInsets.all(0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(MegaStyle.borderRadiusSize),
-        side: const BorderSide(color: MegaStyle.borderColorLight),
-      ),
-    ),
     inputDecorationTheme: ThemeData.light().inputDecorationTheme.copyWith(
           contentPadding: const EdgeInsets.only(bottom: MegaStyle.iconSize),
           filled: true,
@@ -121,16 +111,6 @@ class MegaThemes {
           secondary: MegaStyle.accentColor1,
         ),
     scaffoldBackgroundColor: MegaStyle.backgroundColorDark,
-    cardTheme: CardTheme(
-      color: MegaStyle.cardBackgroundColorDark,
-      clipBehavior: Clip.antiAlias,
-      elevation: 0,
-      margin: const EdgeInsets.all(0),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(MegaStyle.borderRadiusSize),
-        side: const BorderSide(color: MegaStyle.borderColorDark),
-      ),
-    ),
     inputDecorationTheme: ThemeData.dark().inputDecorationTheme.copyWith(
           contentPadding: const EdgeInsets.only(bottom: MegaStyle.iconSize),
           filled: true,

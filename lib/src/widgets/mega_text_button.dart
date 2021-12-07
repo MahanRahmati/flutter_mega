@@ -30,7 +30,7 @@ class _MegaTextButtonState extends State<MegaTextButton> {
   Widget build(BuildContext context) {
     if (widget.onPressed != null) disabled = false;
     return Padding(
-      padding: MegaStyle.hHorizontal,
+      padding: MegaStyle.small,
       child: InkWell(
         focusNode: widget.focusNode,
         autofocus: widget.autofocus,

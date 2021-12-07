@@ -1,3 +1,10 @@
+## 0.0.11
+
+- add MegaBadge
+- refactor MegaCard
+- add MegaStatusBar
+- code cleanup
+
 ## 0.0.10
 
 - fix MegaHorizontalDivider and MegaVerticalDivider

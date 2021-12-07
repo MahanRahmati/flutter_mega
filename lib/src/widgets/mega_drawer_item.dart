@@ -17,7 +17,7 @@ class MegaDrawerItem extends StatefulWidget {
     required this.icon,
     required this.title,
     this.trailing = const SizedBox(),
-    required this.accentColor,
+    this.accentColor = MegaStyle.accentColor1,
     this.selected = false,
     this.focusNode,
     this.autofocus = false,

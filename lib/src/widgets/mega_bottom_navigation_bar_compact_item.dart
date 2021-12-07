@@ -14,7 +14,7 @@ class MegaBottomNavigationBarCompactItem extends StatefulWidget {
   const MegaBottomNavigationBarCompactItem({
     Key? key,
     required this.icon,
-    required this.accentColor,
+    this.accentColor = MegaStyle.accentColor1,
     this.selected = false,
     this.focusNode,
     this.autofocus = false,

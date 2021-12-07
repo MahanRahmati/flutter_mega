@@ -18,7 +18,7 @@ class MegaLinkedButtons extends StatelessWidget {
     }
 
     return Padding(
-      padding: MegaStyle.hHorizontal,
+      padding: MegaStyle.small,
       child: Container(
         height: MegaStyle.buttonSize,
         clipBehavior: Clip.antiAlias,

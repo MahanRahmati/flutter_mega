@@ -13,7 +13,7 @@ class MegaDrawerCompactItem extends StatefulWidget {
   const MegaDrawerCompactItem({
     Key? key,
     required this.icon,
-    required this.accentColor,
+    this.accentColor = MegaStyle.accentColor1,
     this.selected = false,
     this.focusNode,
     this.autofocus = false,

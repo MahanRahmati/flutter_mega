@@ -27,7 +27,7 @@ class MegaTextField extends StatelessWidget {
     required this.prefixIcon,
     this.suffixIcon,
     this.obscureText = false,
-    required this.accentColor,
+    this.accentColor = MegaStyle.accentColor1,
     this.focusNode,
     this.autofocus = false,
     this.keyboardType,
@@ -39,7 +39,7 @@ class MegaTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: MegaStyle.hHorizontal,
+      padding: MegaStyle.small,
       child: SizedBox(
         height: MegaStyle.buttonSize,
         child: TextFormField(

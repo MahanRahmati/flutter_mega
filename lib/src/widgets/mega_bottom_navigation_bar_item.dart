@@ -16,7 +16,7 @@ class MegaBottomNavigationBarItem extends StatefulWidget {
     Key? key,
     required this.icon,
     required this.title,
-    required this.accentColor,
+    this.accentColor = MegaStyle.accentColor1,
     this.selected = false,
     this.focusNode,
     this.autofocus = false,
