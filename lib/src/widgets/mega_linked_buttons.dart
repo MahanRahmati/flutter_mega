@@ -26,7 +26,10 @@ class MegaLinkedButtons extends StatelessWidget {
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(4.0),
-          child: Row(children: addDividers(buttons)),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: addDividers(buttons),
+          ),
         ),
       ),
     );

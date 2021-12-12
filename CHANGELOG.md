@@ -1,3 +1,8 @@
+## 0.0.12+5
+
+- fix MegaBaseButton and MegaLinkedButtons width
+- add MainAxisAlignment.spaceEvenly to MegaScaffoldSmall
+
 ## 0.0.12+4
 
 - fix MegaScaffold background

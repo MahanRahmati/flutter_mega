@@ -44,7 +44,7 @@ class _MegaBaseButtonState extends State<MegaBaseButton> {
         onShowHoverHighlight: (hover) => setState(() => hovering = hover),
         child: AnimatedContainer(
           height: widget.height,
-          width: (widget.width != null) ? widget.width : null,
+          width: widget.width,
           duration: MegaStyle.basicDuration,
           curve: MegaStyle.basicCurve,
           decoration: BoxDecoration(
@@ -59,7 +59,7 @@ class _MegaBaseButtonState extends State<MegaBaseButton> {
                         : backgroundColor(context),
           ),
           padding: MegaStyle.horizontal,
-          child: widget.child,
+          child: Row(mainAxisSize: MainAxisSize.min, children: [widget.child]),
         ),
       ),
     );

@@ -43,7 +43,7 @@ class MegaScaffoldSmall extends StatelessWidget {
                 width: double.infinity,
                 decoration: BoxDecoration(color: headerColor(context)),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     for (var d in destinations!)
                       destinations!.length > 4
