@@ -1,3 +1,8 @@
+## 0.0.12+3
+
+- fix MegaScaffold background
+- fix MegaScaffold destinations and onNavigationIndexChange
+
 ## 0.0.12+2
 
 - return material scaffold for now

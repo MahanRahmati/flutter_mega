@@ -5,16 +5,16 @@ import 'package:mega/mega.dart';
 class MegaScaffold extends StatelessWidget {
   final MegaHeaderBar headerBar;
   final Widget? body;
-  final int currentIndex;
-  final List<AdaptiveScaffoldDestination> destinations;
+  final int? currentIndex;
+  final List<AdaptiveScaffoldDestination>? destinations;
   final ValueChanged<int>? onNavigationIndexChange;
 
   const MegaScaffold({
     Key? key,
     this.headerBar = const MegaHeaderBar(),
     this.body,
-    required this.currentIndex,
-    required this.destinations,
+    this.currentIndex,
+    this.destinations,
     this.onNavigationIndexChange,
   }) : super(key: key);
 
