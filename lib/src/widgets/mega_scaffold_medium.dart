@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart'; //TODO
 import 'package:flutter/widgets.dart';
 import 'package:mega/mega.dart';
 
@@ -26,32 +27,34 @@ class MegaScaffoldMedium extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        headerBar,
-        Row(
-          children: [
-            Container(
-              width: MegaStyle.sideBarCompactWidth,
-              decoration: BoxDecoration(color: sideColor(context)),
-              child: Column(
-                children: [
-                  for (var d in destinations)
-                    MegaSideBarCompactItem(
-                      icon: d.icon,
-                      badge: d.badge,
-                      accentColor: d.accentColor,
-                      selected: destinations.indexOf(d) == currentIndex,
-                      onPressed: () => _destinationTapped(d),
-                    ),
-                ],
+    return Scaffold(
+      body: Column(
+        children: [
+          headerBar,
+          Row(
+            children: [
+              Container(
+                width: MegaStyle.sideBarCompactWidth,
+                decoration: BoxDecoration(color: sideColor(context)),
+                child: Column(
+                  children: [
+                    for (var d in destinations)
+                      MegaSideBarCompactItem(
+                        icon: d.icon,
+                        badge: d.badge,
+                        accentColor: d.accentColor,
+                        selected: destinations.indexOf(d) == currentIndex,
+                        onPressed: () => _destinationTapped(d),
+                      ),
+                  ],
+                ),
               ),
-            ),
-            const MegaVerticalDivider(),
-            Expanded(child: body!),
-          ],
-        ),
-      ],
+              const MegaVerticalDivider(),
+              Expanded(child: body!),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

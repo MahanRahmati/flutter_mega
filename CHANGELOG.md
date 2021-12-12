@@ -1,3 +1,7 @@
+## 0.0.12+2
+
+- return material scaffold for now
+
 ## 0.0.12+1
 
 - fix MegaScaffoldLarge and MegaScaffoldMedium and MegaScaffoldSmall

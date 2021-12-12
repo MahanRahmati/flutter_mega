@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart'; //TODO
 import 'package:flutter/widgets.dart';
 import 'package:mega/mega.dart';
 
@@ -26,33 +27,35 @@ class MegaScaffoldLarge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        headerBar,
-        Row(
-          children: [
-            Container(
-              width: MegaStyle.sideBarWidth,
-              decoration: BoxDecoration(color: sideColor(context)),
-              child: Column(
-                children: [
-                  for (var d in destinations)
-                    MegaSideBarItem(
-                      icon: d.icon,
-                      title: d.title,
-                      badge: d.badge,
-                      accentColor: d.accentColor,
-                      selected: destinations.indexOf(d) == currentIndex,
-                      onPressed: () => _destinationTapped(d),
-                    ),
-                ],
+    return Scaffold(
+      body: Column(
+        children: [
+          headerBar,
+          Row(
+            children: [
+              Container(
+                width: MegaStyle.sideBarWidth,
+                decoration: BoxDecoration(color: sideColor(context)),
+                child: Column(
+                  children: [
+                    for (var d in destinations)
+                      MegaSideBarItem(
+                        icon: d.icon,
+                        title: d.title,
+                        badge: d.badge,
+                        accentColor: d.accentColor,
+                        selected: destinations.indexOf(d) == currentIndex,
+                        onPressed: () => _destinationTapped(d),
+                      ),
+                  ],
+                ),
               ),
-            ),
-            const MegaVerticalDivider(),
-            Expanded(child: body!),
-          ],
-        ),
-      ],
+              const MegaVerticalDivider(),
+              Expanded(child: body!),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

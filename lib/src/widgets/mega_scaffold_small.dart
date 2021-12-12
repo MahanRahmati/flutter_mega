@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart'; //TODO
 import 'package:flutter/widgets.dart';
 import 'package:mega/mega.dart';
 
@@ -27,41 +28,43 @@ class MegaScaffoldSmall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool compact = destinations.length > 4 ? true : false;
-    return Column(
-      children: [
-        headerBar,
-        Expanded(
-          child: Container(color: backgroundColor(context), child: body),
-        ),
-        const MegaHorizontalDivider(),
-        Container(
-          height: MegaStyle.bottomBarHeight,
-          width: double.infinity,
-          decoration: BoxDecoration(color: headerColor(context)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              for (var d in destinations)
-                compact
-                    ? MegaBottomNavigationBarCompactItem(
-                        icon: d.icon,
-                        badge: d.badge,
-                        accentColor: d.accentColor,
-                        selected: destinations.indexOf(d) == currentIndex,
-                        onPressed: () => _destinationTapped(d),
-                      )
-                    : MegaBottomNavigationBarItem(
-                        icon: d.icon,
-                        title: d.title,
-                        badge: d.badge,
-                        accentColor: d.accentColor,
-                        selected: destinations.indexOf(d) == currentIndex,
-                        onPressed: () => _destinationTapped(d),
-                      ),
-            ],
+    return Scaffold(
+      body: Column(
+        children: [
+          headerBar,
+          Expanded(
+            child: Container(color: backgroundColor(context), child: body),
           ),
-        ),
-      ],
+          const MegaHorizontalDivider(),
+          Container(
+            height: MegaStyle.bottomBarHeight,
+            width: double.infinity,
+            decoration: BoxDecoration(color: headerColor(context)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                for (var d in destinations)
+                  compact
+                      ? MegaBottomNavigationBarCompactItem(
+                          icon: d.icon,
+                          badge: d.badge,
+                          accentColor: d.accentColor,
+                          selected: destinations.indexOf(d) == currentIndex,
+                          onPressed: () => _destinationTapped(d),
+                        )
+                      : MegaBottomNavigationBarItem(
+                          icon: d.icon,
+                          title: d.title,
+                          badge: d.badge,
+                          accentColor: d.accentColor,
+                          selected: destinations.indexOf(d) == currentIndex,
+                          onPressed: () => _destinationTapped(d),
+                        ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
