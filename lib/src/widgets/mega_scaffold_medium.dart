@@ -30,38 +30,36 @@ class MegaScaffoldMedium extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          headerBar,
-          Row(
-            children: [
-              if (destinations != null)
-                Container(
-                  width: MegaStyle.sideBarCompactWidth,
-                  decoration: BoxDecoration(color: sideColor(context)),
-                  child: Column(
-                    children: [
-                      for (var d in destinations!)
-                        MegaSideBarCompactItem(
-                          icon: d.icon,
-                          badge: d.badge,
-                          accentColor: d.accentColor,
-                          selected: destinations!.indexOf(d) == currentIndex,
-                          onPressed: () => _destinationTapped(d),
-                        ),
-                    ],
+      body: Container(
+        decoration: BoxDecoration(color: backgroundColor(context)),
+        child: Column(
+          children: [
+            headerBar,
+            Row(
+              children: [
+                if (destinations != null)
+                  Container(
+                    width: MegaStyle.sideBarCompactWidth,
+                    decoration: BoxDecoration(color: sideColor(context)),
+                    child: Column(
+                      children: [
+                        for (var d in destinations!)
+                          MegaSideBarCompactItem(
+                            icon: d.icon,
+                            badge: d.badge,
+                            accentColor: d.accentColor,
+                            selected: destinations!.indexOf(d) == currentIndex,
+                            onPressed: () => _destinationTapped(d),
+                          ),
+                      ],
+                    ),
                   ),
-                ),
-              if (destinations != null) const MegaVerticalDivider(),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(color: backgroundColor(context)),
-                  child: body!,
-                ),
-              ),
-            ],
-          ),
-        ],
+                if (destinations != null) const MegaVerticalDivider(),
+                Expanded(child: body!),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

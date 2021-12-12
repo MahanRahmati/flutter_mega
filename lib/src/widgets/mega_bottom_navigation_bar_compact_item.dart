@@ -45,8 +45,8 @@ class MegaBottomNavigationBarCompactItem extends StatelessWidget {
                 ),
               ),
               AnimatedContainer(
-                height: selected ? MegaStyle.iconSize : 0,
-                width: MegaStyle.halfPadding,
+                height: MegaStyle.halfPadding,
+                width: selected ? MegaStyle.iconSize : 0,
                 duration: MegaStyle.basicDuration,
                 curve: MegaStyle.basicCurve,
                 decoration: BoxDecoration(

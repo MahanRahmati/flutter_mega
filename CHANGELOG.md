@@ -1,3 +1,8 @@
+## 0.0.12+4
+
+- fix MegaScaffold background
+- fix MegaBaseButton width
+
 ## 0.0.12+3
 
 - fix MegaScaffold background

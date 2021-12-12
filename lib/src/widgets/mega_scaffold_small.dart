@@ -30,45 +30,45 @@ class MegaScaffoldSmall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          headerBar,
-          Expanded(
-            child: Container(
-              color: backgroundColor(context),
-              child: body,
-            ),
-          ),
-          if (destinations != null) const MegaHorizontalDivider(),
-          if (destinations != null)
-            Container(
-              height: MegaStyle.bottomBarHeight,
-              width: double.infinity,
-              decoration: BoxDecoration(color: headerColor(context)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  for (var d in destinations!)
-                    destinations!.length > 4
-                        ? MegaBottomNavigationBarCompactItem(
-                            icon: d.icon,
-                            badge: d.badge,
-                            accentColor: d.accentColor,
-                            selected: destinations!.indexOf(d) == currentIndex,
-                            onPressed: () => _destinationTapped(d),
-                          )
-                        : MegaBottomNavigationBarItem(
-                            icon: d.icon,
-                            title: d.title,
-                            badge: d.badge,
-                            accentColor: d.accentColor,
-                            selected: destinations!.indexOf(d) == currentIndex,
-                            onPressed: () => _destinationTapped(d),
-                          ),
-                ],
+      body: Container(
+        decoration: BoxDecoration(color: backgroundColor(context)),
+        child: Column(
+          children: [
+            headerBar,
+            Expanded(child: body!),
+            if (destinations != null) const MegaHorizontalDivider(),
+            if (destinations != null)
+              Container(
+                height: MegaStyle.bottomBarHeight,
+                width: double.infinity,
+                decoration: BoxDecoration(color: headerColor(context)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    for (var d in destinations!)
+                      destinations!.length > 4
+                          ? MegaBottomNavigationBarCompactItem(
+                              icon: d.icon,
+                              badge: d.badge,
+                              accentColor: d.accentColor,
+                              selected:
+                                  destinations!.indexOf(d) == currentIndex,
+                              onPressed: () => _destinationTapped(d),
+                            )
+                          : MegaBottomNavigationBarItem(
+                              icon: d.icon,
+                              title: d.title,
+                              badge: d.badge,
+                              accentColor: d.accentColor,
+                              selected:
+                                  destinations!.indexOf(d) == currentIndex,
+                              onPressed: () => _destinationTapped(d),
+                            ),
+                  ],
+                ),
               ),
-            ),
-        ],
+          ],
+        ),
       ),
     );
   }
