@@ -1,3 +1,10 @@
+## 0.0.12+1
+
+- fix MegaScaffoldLarge and MegaScaffoldMedium and MegaScaffoldSmall
+- revert MegaHorizontalDivider and MegaVerticalDivider
+- fix MegaLinkedTextButtons
+- fix MegaBottomNavigationBarItem and MegaBottomNavigationBarCompactItem
+
 ## 0.0.12
 
 - rename drawer to sidebar

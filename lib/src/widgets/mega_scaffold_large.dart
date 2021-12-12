@@ -32,7 +32,6 @@ class MegaScaffoldLarge extends StatelessWidget {
         Row(
           children: [
             Container(
-              height: double.infinity,
               width: MegaStyle.sideBarWidth,
               decoration: BoxDecoration(color: sideColor(context)),
               child: Column(

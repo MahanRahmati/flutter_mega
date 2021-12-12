@@ -26,6 +26,7 @@ class MegaScaffoldSmall extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool compact = destinations.length > 4 ? true : false;
     return Column(
       children: [
         headerBar,
@@ -41,13 +42,22 @@ class MegaScaffoldSmall extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               for (var d in destinations)
-                MegaSideBarCompactItem(
-                  icon: d.icon,
-                  badge: d.badge,
-                  accentColor: d.accentColor,
-                  selected: destinations.indexOf(d) == currentIndex,
-                  onPressed: () => _destinationTapped(d),
-                ),
+                compact
+                    ? MegaBottomNavigationBarCompactItem(
+                        icon: d.icon,
+                        badge: d.badge,
+                        accentColor: d.accentColor,
+                        selected: destinations.indexOf(d) == currentIndex,
+                        onPressed: () => _destinationTapped(d),
+                      )
+                    : MegaBottomNavigationBarItem(
+                        icon: d.icon,
+                        title: d.title,
+                        badge: d.badge,
+                        accentColor: d.accentColor,
+                        selected: destinations.indexOf(d) == currentIndex,
+                        onPressed: () => _destinationTapped(d),
+                      ),
             ],
           ),
         ),

@@ -3,22 +3,22 @@ import 'package:mega/mega.dart';
 
 class MegaBottomNavigationBarCompactItem extends StatelessWidget {
   final IconData icon;
+  final Widget badge;
   final Color accentColor;
   final bool selected;
   final FocusNode? focusNode;
   final bool autofocus;
-  final ValueChanged<int> onTap;
-  final int index;
+  final VoidCallback? onPressed;
 
   const MegaBottomNavigationBarCompactItem({
     Key? key,
     required this.icon,
+    this.badge = const SizedBox.shrink(),
     this.accentColor = MegaStyle.accentColor1,
     this.selected = false,
     this.focusNode,
     this.autofocus = false,
-    required this.onTap,
-    required this.index,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -26,31 +26,37 @@ class MegaBottomNavigationBarCompactItem extends StatelessWidget {
     return Padding(
       padding: MegaStyle.small,
       child: Stack(
-        alignment: Alignment.bottomCenter,
+        alignment: Alignment.topRight,
         children: [
-          MegaBaseButton(
-            onTap: () => onTap(index),
-            height: MegaStyle.buttonSize,
-            width: MegaStyle.buttonSize,
-            selected: selected,
-            focusNode: focusNode,
-            autofocus: autofocus,
-            child: Icon(
-              icon,
-              size: MegaStyle.iconSize,
-              color: iconColor(context),
-            ),
+          Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              MegaBaseButton(
+                onTap: onPressed,
+                height: MegaStyle.buttonSize,
+                width: MegaStyle.buttonSize,
+                selected: selected,
+                focusNode: focusNode,
+                autofocus: autofocus,
+                child: Icon(
+                  icon,
+                  size: MegaStyle.iconSize,
+                  color: iconColor(context),
+                ),
+              ),
+              AnimatedContainer(
+                height: selected ? MegaStyle.iconSize : 0,
+                width: MegaStyle.halfPadding,
+                duration: MegaStyle.basicDuration,
+                curve: MegaStyle.basicCurve,
+                decoration: BoxDecoration(
+                  borderRadius: MegaStyle.borderRadius,
+                  color: accentColor,
+                ),
+              ),
+            ],
           ),
-          AnimatedContainer(
-            height: MegaStyle.halfPadding,
-            width: selected ? MegaStyle.iconSize : 0,
-            duration: MegaStyle.basicDuration,
-            curve: MegaStyle.basicCurve,
-            decoration: BoxDecoration(
-              borderRadius: MegaStyle.borderRadius,
-              color: accentColor,
-            ),
-          ),
+          badge,
         ],
       ),
     );

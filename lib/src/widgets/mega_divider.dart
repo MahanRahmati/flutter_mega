@@ -6,9 +6,13 @@ class MegaHorizontalDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 1.0,
-      decoration: BoxDecoration(color: borderColor(context)),
+      child: Center(
+        child: Container(
+          decoration: BoxDecoration(color: borderColor(context)),
+        ),
+      ),
     );
   }
 }
@@ -18,9 +22,13 @@ class MegaVerticalDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 1.0,
-      decoration: BoxDecoration(color: borderColor(context)),
+      child: Center(
+        child: Container(
+          decoration: BoxDecoration(color: borderColor(context)),
+        ),
+      ),
     );
   }
 }

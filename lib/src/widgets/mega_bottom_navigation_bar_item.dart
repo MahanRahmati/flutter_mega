@@ -4,23 +4,23 @@ import 'package:mega/mega.dart';
 class MegaBottomNavigationBarItem extends StatelessWidget {
   final IconData icon;
   final String title;
+  final Widget badge;
   final Color accentColor;
   final bool selected;
   final FocusNode? focusNode;
   final bool autofocus;
-  final ValueChanged<int> onTap;
-  final int index;
+  final VoidCallback? onPressed;
 
   const MegaBottomNavigationBarItem({
     Key? key,
     required this.icon,
     required this.title,
+    this.badge = const SizedBox.shrink(),
     this.accentColor = MegaStyle.accentColor1,
     this.selected = false,
     this.focusNode,
     this.autofocus = false,
-    required this.onTap,
-    required this.index,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -31,7 +31,7 @@ class MegaBottomNavigationBarItem extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         children: [
           MegaBaseButton(
-            onTap: () => onTap(index),
+            onTap: onPressed,
             height: MegaStyle.buttonSize,
             selected: selected,
             focusNode: focusNode,
@@ -47,12 +47,14 @@ class MegaBottomNavigationBarItem extends StatelessWidget {
                   ),
                 ),
                 Text(title, style: button(context, false)),
+                const Spacer(),
+                badge,
               ],
             ),
           ),
           AnimatedContainer(
-            height: MegaStyle.halfPadding,
-            width: selected ? MegaStyle.iconSize : 0,
+            height: selected ? MegaStyle.iconSize : 0,
+            width: MegaStyle.halfPadding,
             duration: MegaStyle.basicDuration,
             curve: MegaStyle.basicCurve,
             decoration: BoxDecoration(

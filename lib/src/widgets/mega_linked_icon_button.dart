@@ -24,6 +24,7 @@ class MegaLinkedIconButton extends StatelessWidget {
       onTap: onPressed,
       height: MegaStyle.buttonSize,
       width: MegaStyle.buttonSize,
+      borderRadius: const BorderRadius.all(Radius.circular(0)),
       disabled: disabled,
       selected: selected,
       focusNode: focusNode,
