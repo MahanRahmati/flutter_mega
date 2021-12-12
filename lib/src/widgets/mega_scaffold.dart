@@ -1,39 +1,65 @@
-import 'package:flutter/material.dart';
-import 'package:mega/src/styles/mega_styles.dart';
-import 'package:mega/src/utils/theme_picker.dart';
+import 'package:flutter/widgets.dart';
+import 'package:mega/mega.dart';
 
+// Based on https://github.com/flutter/samples/blob/master/experimental/web_dashboard/lib/src/widgets/third_party/adaptive_scaffold.dart
 class MegaScaffold extends StatelessWidget {
-  final Widget headerBar;
-  final Widget body;
-  final Widget bottomBar;
+  final MegaHeaderBar headerBar;
+  final Widget? body;
+  final int currentIndex;
+  final List<AdaptiveScaffoldDestination> destinations;
+  final ValueChanged<int>? onNavigationIndexChange;
 
   const MegaScaffold({
     Key? key,
-    this.headerBar = const SizedBox(),
-    this.body = const SizedBox.expand(),
-    this.bottomBar = const SizedBox(),
+    this.headerBar = const MegaHeaderBar(),
+    this.body,
+    required this.currentIndex,
+    required this.destinations,
+    this.onNavigationIndexChange,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: Container(
-              color: ThemePicker.of(context).pick(
-                light: MegaStyle.backgroundColorLight,
-                dark: MegaStyle.backgroundColorDark,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [headerBar, Expanded(child: body)],
-              ),
-            ),
-          ),
-          bottomBar,
-        ],
-      ),
+    if (MediaQuery.of(context).size.width > 960.0) {
+      return MegaScaffoldLarge(
+        headerBar: headerBar,
+        body: body,
+        currentIndex: currentIndex,
+        destinations: destinations,
+        onNavigationIndexChange: onNavigationIndexChange,
+      );
+    }
+
+    if (MediaQuery.of(context).size.width > 640.0) {
+      return MegaScaffoldMedium(
+        headerBar: headerBar,
+        body: body,
+        currentIndex: currentIndex,
+        destinations: destinations,
+        onNavigationIndexChange: onNavigationIndexChange,
+      );
+    }
+
+    return MegaScaffoldSmall(
+      headerBar: headerBar,
+      body: body,
+      currentIndex: currentIndex,
+      destinations: destinations,
+      onNavigationIndexChange: onNavigationIndexChange,
     );
   }
+}
+
+class AdaptiveScaffoldDestination {
+  final String title;
+  final IconData icon;
+  final Widget badge;
+  final Color accentColor;
+
+  const AdaptiveScaffoldDestination({
+    required this.title,
+    required this.icon,
+    this.badge = const SizedBox.shrink(),
+    this.accentColor = MegaStyle.accentColor1,
+  });
 }

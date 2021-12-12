@@ -1,24 +1,14 @@
 import 'package:flutter/widgets.dart';
-import 'package:mega/src/styles/mega_styles.dart';
-import 'package:mega/src/utils/theme_picker.dart';
+import 'package:mega/mega.dart';
 
 class MegaHorizontalDivider extends StatelessWidget {
   const MegaHorizontalDivider({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: 1.0,
-      child: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            color: ThemePicker.of(context).pick(
-              light: MegaStyle.borderColorLight,
-              dark: MegaStyle.borderColorDark,
-            ),
-          ),
-        ),
-      ),
+      decoration: BoxDecoration(color: borderColor(context)),
     );
   }
 }
@@ -28,18 +18,9 @@ class MegaVerticalDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: 1.0,
-      child: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            color: ThemePicker.of(context).pick(
-              light: MegaStyle.borderColorLight,
-              dark: MegaStyle.borderColorDark,
-            ),
-          ),
-        ),
-      ),
+      decoration: BoxDecoration(color: borderColor(context)),
     );
   }
 }

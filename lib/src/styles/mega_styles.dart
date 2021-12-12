@@ -1,55 +1,55 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 abstract class MegaStyle {
   // Colors
 
   // BackgroundColor
-  static const Color backgroundColorLight = Color(0xFFFBFBFB);
-  static const Color backgroundColorDark = Color(0xFF242424);
+  static const Color backgroundColorLight = Color(0xFFF5F5F5); //245
+  static const Color backgroundColorDark = Color(0xFF141414); //14
 
   // BackgroundColorDisabled
-  static const Color backgroundColorDisabledLight = Color(0xFFF1F1F1);
-  static const Color backgroundColorDisabledDark = Color(0xFF2E2E2E);
+  static const Color backgroundColorDisabledLight = Color(0xFFE7E7E7); //231
+  static const Color backgroundColorDisabledDark = Color(0xFF212121); //21
 
   // CardBackgroundColor
-  static const Color cardBackgroundColorLight = Color(0xFFFFFFFF);
-  static const Color cardBackgroundColorDark = Color(0xFF303030);
-
-  // PrimaryTextColor
-  static const Color primaryTextColorLight = Color(0xFF2E3436);
-  static const Color primaryTextColorDark = Color(0xFFE5E5E5);
-
-  // SecondaryTextColor
-  static const Color secondaryTextColorLight = Color(0xFF888888);
-  static const Color secondaryTextColorDark = Color(0xFF949494);
+  static const Color cardBackgroundColorLight = Color(0xFFFCFCFC); //252
+  static const Color cardBackgroundColorDark = Color(0xFF282828); //28
 
   // HeaderColor
-  static const Color headerColorLight = Color(0xFFEBEBEB);
-  static const Color headerColorDark = Color(0xFF303030);
+  static const Color headerColorLight = Color(0xFFE0E0E0); //224
+  static const Color headerColorDark = Color(0xFF070707); //07
+
+  // SideColor
+  static const Color sideColorLight = backgroundColorLight;
+  static const Color sideColorDark = backgroundColorDark;
 
   // HoverColor
-  static const Color hoverColorLight = Color(0xFFD8D8D8);
-  static const Color hoverColorDark = Color(0xFF454545);
+  static const Color hoverColorLight = Color(0xFFECECEC); //238
+  static const Color hoverColorDark = Color(0xFF353535); //35
 
   // BorderColor
-  static const Color borderColorLight = Color(0xFFCFCFCF);
-  static const Color borderColorDark = Color(0xFF737373);
+  static const Color borderColorLight = Color(0xFFD2D2D2); //210
+  static const Color borderColorDark = Color(0xFF494949); //49
+
+  // PrimaryTextColor
+  static const Color primaryTextColorLight = backgroundColorDark;
+  static const Color primaryTextColorDark = backgroundColorLight;
+
+  // SecondaryTextColor
+  static const Color secondaryTextColorLight = hoverColorDark;
+  static const Color secondaryTextColorDark = hoverColorLight;
 
   // IconColor
-  static const Color iconColorLight = Color(0xFF2E3436);
-  static const Color iconColorDark = Color(0xFFE5E5E5);
+  static const Color iconColorLight = hoverColorDark;
+  static const Color iconColorDark = hoverColorLight;
 
   // IconColorDisabled
-  static const Color iconColorDisabledLight = Color(0xFF888888);
-  static const Color iconColorDisabledDark = Color(0xFF949494);
+  static const Color disabledColorLight = Color(0xFF424242); //42
+  static const Color disabledColorDark = Color(0xFFD9D9D9); //217
 
   // TextFieldBackgroundColor
-  static const Color textFieldBackgroundColorLight = Color(0xFFFFFFFF);
-  static const Color textFieldBackgroundColorDark = Color(0xFF1E1E1E);
-
-  // HintColor
-  static const Color hintColorLight = Color(0xFF666666);
-  static const Color hintColorDark = Color(0xFFA5A5A5);
+  static const Color textFieldBackgroundColorLight = backgroundColorLight;
+  static const Color textFieldBackgroundColorDark = backgroundColorDark;
 
   // AccentColors
   static const Color accentColor1 = Color(0xFF36AEF9);
@@ -63,13 +63,19 @@ abstract class MegaStyle {
   // Doubles
   static const double padding = 7;
   static const double halfPadding = 3.5;
-  static const double borderRadiusSize = 5.0;
-  static const double headerBarHeight = 48;
-  static const double buttonSize = 34;
-  static const double iconSize = 17;
+  static const double borderRadiusSize = 7;
+  static const double headerBarHeight = 49;
+  static const double bottomBarHeight = 49;
+  static const double sideBarWidth = 315;
+  static const double sideBarCompactWidth = 49;
+  static const double tabBarHeight = 42;
+  static const double maxTabWidth = 210;
+  static const double minTabWidth = 105;
+  static const double buttonSize = 35;
+  static const double iconSize = 21;
 
   // Durations
-  static const Duration basicDuration = Duration(milliseconds: 200);
+  static const Duration basicDuration = Duration(milliseconds: 210);
 
   // Curves
   static const Curve basicCurve = Curves.ease;

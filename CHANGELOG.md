@@ -1,3 +1,12 @@
+## 0.0.12
+
+- rename drawer to sidebar
+- add MegaBaseButton and refactor buttons
+- update MegaStyle
+- add MegaHelpers
+- remove MegaTextField for now
+- code cleanup
+
 ## 0.0.11
 
 - add MegaBadge

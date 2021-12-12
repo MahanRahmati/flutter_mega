@@ -1,17 +1,16 @@
 import 'package:flutter/widgets.dart';
-import 'package:mega/src/styles/mega_styles.dart';
-import 'package:mega/src/utils/theme_picker.dart';
+import 'package:mega/mega.dart';
 
 class MegaCard extends StatelessWidget {
-  final Widget child;
   final double? height;
   final double? width;
+  final Widget child;
 
   const MegaCard({
     Key? key,
-    required this.child,
     this.height,
     this.width,
+    required this.child,
   }) : super(key: key);
 
   @override
@@ -23,16 +22,8 @@ class MegaCard extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
           borderRadius: MegaStyle.borderRadius,
-          border: Border.all(
-            color: ThemePicker.of(context).pick(
-              light: MegaStyle.borderColorLight,
-              dark: MegaStyle.borderColorDark,
-            ),
-          ),
-          color: ThemePicker.of(context).pick(
-            light: MegaStyle.cardBackgroundColorLight,
-            dark: MegaStyle.cardBackgroundColorDark,
-          ),
+          border: Border.all(color: borderColor(context)),
+          color: cardBackgroundColor(context),
         ),
         child: child,
       ),

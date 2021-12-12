@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:mega/src/styles/mega_styles.dart';
-import 'package:mega/src/widgets/mega_divider.dart';
+import 'package:flutter/widgets.dart';
+import 'package:mega/mega.dart';
 
 class MegaHorizontalSeparator extends StatelessWidget {
   const MegaHorizontalSeparator({Key? key}) : super(key: key);

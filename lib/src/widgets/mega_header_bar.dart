@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:mega/src/styles/mega_styles.dart';
-import 'package:mega/src/utils/theme_picker.dart';
+import 'package:flutter/widgets.dart';
+import 'package:mega/mega.dart';
 
 class MegaHeaderBar extends StatelessWidget {
   final Widget leading;
@@ -9,45 +8,31 @@ class MegaHeaderBar extends StatelessWidget {
 
   const MegaHeaderBar({
     Key? key,
-    this.leading = const SizedBox(),
-    this.center = const SizedBox(),
-    this.trailing = const SizedBox(),
+    this.leading = const SizedBox.shrink(),
+    this.center = const SizedBox.shrink(),
+    this.trailing = const SizedBox.shrink(),
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.topCenter,
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border(
-            top: BorderSide(
-              color: ThemePicker.of(context).pick(
-                light: MegaStyle.borderColorLight,
-                dark: MegaStyle.borderColorDark,
+      child: Column(
+        children: [
+          Container(
+            height: MegaStyle.headerBarHeight,
+            width: double.infinity,
+            decoration: BoxDecoration(color: headerColor(context)),
+            child: Padding(
+              padding: MegaStyle.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [leading, center, trailing],
               ),
             ),
-            bottom: BorderSide(
-              color: ThemePicker.of(context).pick(
-                light: MegaStyle.borderColorLight,
-                dark: MegaStyle.borderColorDark,
-              ),
-            ),
           ),
-          color: ThemePicker.of(context).pick(
-            light: MegaStyle.headerColorLight,
-            dark: MegaStyle.headerColorDark,
-          ),
-        ),
-        height: MegaStyle.headerBarHeight,
-        width: double.infinity,
-        child: Padding(
-          padding: MegaStyle.horizontal,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [leading, center, trailing],
-          ),
-        ),
+          const MegaHorizontalDivider(),
+        ],
       ),
     );
   }

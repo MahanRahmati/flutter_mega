@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:mega/src/styles/mega_styles.dart';
-import 'package:mega/src/utils/theme_picker.dart';
-import 'package:mega/src/widgets/mega_divider.dart';
+import 'package:flutter/widgets.dart';
+import 'package:mega/mega.dart';
 
 class MegaLinkedButtons extends StatelessWidget {
   final List<Widget> buttons;
@@ -11,7 +9,7 @@ class MegaLinkedButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> addDividers(List<Widget> buttons) {
-      for (var i = 1; i < buttons.length; i = i + 2) {
+      for (int i = 1; i < buttons.length; i = i + 2) {
         buttons.insert(i, const MegaVerticalDivider());
       }
       return buttons;
@@ -24,12 +22,7 @@ class MegaLinkedButtons extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
           borderRadius: MegaStyle.borderRadius,
-          border: Border.all(
-            color: ThemePicker.of(context).pick(
-              light: MegaStyle.borderColorLight,
-              dark: MegaStyle.borderColorDark,
-            ),
-          ),
+          border: Border.all(color: borderColor(context)),
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(4.0),

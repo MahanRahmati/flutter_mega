@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:mega/src/styles/mega_styles.dart';
+import 'package:mega/mega.dart';
 
 class MegaBadge extends StatelessWidget {
   final Widget child;
