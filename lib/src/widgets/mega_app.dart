@@ -3,11 +3,13 @@ import 'dart:ui' as ui;
 // import 'package:flutter/cupertino.dart' show DefaultCupertinoLocalizations;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+
 // import 'package:flutter/material.dart' show DefaultMaterialLocalizations;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:mega/mega.dart';
+import 'package:flutter/src/widgets/media_query.dart';
 
 // Based on https://github.com/flutter/flutter/blob/master/packages/flutter/lib/src/material/app.dart
 

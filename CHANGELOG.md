@@ -1,3 +1,7 @@
+## 0.0.13+2
+
+- add MediaQuery to MegaApp
+
 ## 0.0.13+1
 
 - add MegaApp
