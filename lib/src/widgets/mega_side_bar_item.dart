@@ -33,6 +33,7 @@ class MegaSideBarItem extends StatelessWidget {
           MegaBaseButton(
             onTap: onPressed,
             height: MegaStyle.buttonSize,
+            width: MegaStyle.sideBarItemWidth,
             selected: selected,
             focusNode: focusNode,
             autofocus: autofocus,

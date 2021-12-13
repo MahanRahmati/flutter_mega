@@ -67,6 +67,7 @@ abstract class MegaStyle {
   static const double headerBarHeight = 49;
   static const double bottomBarHeight = 49;
   static const double sideBarWidth = 315;
+  static const double sideBarItemWidth = 301;
   static const double sideBarCompactWidth = 49;
   static const double tabBarHeight = 42;
   static const double maxTabWidth = 210;

@@ -1,3 +1,9 @@
+## 0.0.12+6
+
+- update MegaThemes
+- remove material scaffold
+- add sideBarItemWidth
+
 ## 0.0.12+5
 
 - fix MegaBaseButton and MegaLinkedButtons width
