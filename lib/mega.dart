@@ -3,6 +3,7 @@ library mega;
 export 'package:mega/src/styles/mega_styles.dart';
 export 'package:mega/src/styles/mega_themes.dart';
 export 'package:mega/src/utils/mega_helpers.dart';
+export 'package:mega/src/widgets/mega_app.dart';
 export 'package:mega/src/widgets/mega_badge.dart';
 export 'package:mega/src/widgets/mega_base_button.dart';
 export 'package:mega/src/widgets/mega_bottom_navigation_bar_compact_item.dart';

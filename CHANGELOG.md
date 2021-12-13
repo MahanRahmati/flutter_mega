@@ -1,3 +1,7 @@
+## 0.0.13+1
+
+- add MegaApp
+
 ## 0.0.13
 
 - add MegaApp
