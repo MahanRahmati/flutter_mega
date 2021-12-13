@@ -1,3 +1,7 @@
+## 0.0.12+7
+
+- fix MegaThemes
+
 ## 0.0.12+6
 
 - update MegaThemes

@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
 
 class MegaThemes {
-  static final megaLight = MegaThemeData.light();
-  static final megaDark = MegaThemeData.dark();
+  static final megaLight = MegaThemeData(brightness: Brightness.light);
+
+  static final megaDark = MegaThemeData(brightness: Brightness.dark);
 }
 
 class MegaThemeData with Diagnosticable {
