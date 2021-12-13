@@ -1,3 +1,7 @@
+## 0.0.13
+
+- add MegaApp
+
 ## 0.0.12+7
 
 - fix MegaThemes
