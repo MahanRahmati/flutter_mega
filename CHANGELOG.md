@@ -1,3 +1,7 @@
+## 0.1.0
+
+- refactor mega
+
 ## 0.0.13+2
 
 - add MediaQuery to MegaApp
