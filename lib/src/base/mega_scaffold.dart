@@ -1,106 +1,92 @@
 import 'package:flutter/widgets.dart';
 import 'package:mega/mega.dart';
 
-// Based on https://github.com/flutter/samples/blob/master/experimental/web_dashboard/lib/src/widgets/third_party/adaptive_scaffold.dart
-class MegaScaffold extends StatelessWidget {
-  final MegaHeaderBar headerBar;
+// Based on https://github.com/ubuntu/yaru_widgets.dart/blob/main/lib/src/yaru_master_detail_page.dart
+class MegaScaffold extends StatefulWidget {
+  final Widget headerBarLeading;
+  final Widget headerBarCenter;
+  final Widget headerBarTrailing;
   final Widget body;
-  final int? selectedIndex;
   final List<NavigationItem>? items;
   final ValueChanged<int>? onItemSelected;
 
   const MegaScaffold({
     Key? key,
-    this.headerBar = const MegaHeaderBar(),
+    this.headerBarLeading = const SizedBox.shrink(),
+    this.headerBarCenter = const SizedBox.shrink(),
+    this.headerBarTrailing = const SizedBox.shrink(),
     required this.body,
-    this.selectedIndex,
     this.items,
     this.onItemSelected,
   }) : super(key: key);
 
-  void _itemTapped(NavigationItem navigationItem) {
-    if (items != null) {
-      var idx = items!.indexOf(navigationItem);
-      if (idx != selectedIndex) onItemSelected!(idx);
-    }
+  @override
+  State<MegaScaffold> createState() => _MegaScaffoldState();
+}
+
+class _MegaScaffoldState extends State<MegaScaffold> {
+  var _index = -1;
+  var _previousIndex = 0;
+
+  void _setIndex(int index) {
+    _previousIndex = _index;
+    _index = index;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(color: backgroundColor(context)),
-      child: Column(
-        children: [
-          headerBar,
-          Expanded(
-            child: Row(
+    return widget.items != null
+        ? LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth < 640) {
+                return MegaPortraitLayout(
+                  headerBarLeading: widget.headerBarLeading,
+                  headerBarCenter: widget.headerBarCenter,
+                  headerBarTrailing: widget.headerBarTrailing,
+                  selectedIndex: _index,
+                  items: widget.items!,
+                  onItemSelected: _setIndex,
+                );
+              } else {
+                return MegaLandscapeLayout(
+                  headerBarLeading: widget.headerBarLeading,
+                  headerBarCenter: widget.headerBarCenter,
+                  headerBarTrailing: widget.headerBarTrailing,
+                  selectedIndex: _index == -1 ? _previousIndex : _index,
+                  items: widget.items!,
+                  onItemSelected: _setIndex,
+                );
+              }
+            },
+          )
+        : Container(
+            decoration: BoxDecoration(color: backgroundColor(context)),
+            child: Column(
               children: [
-                if (deviceWidth(context) > 640.0 && items != null)
-                  AnimatedContainer(
-                    width: deviceWidth(context) > 960.0
-                        ? MegaStyle.sideBarWidth
-                        : MegaStyle.sideBarCompactWidth,
-                    duration: MegaStyle.basicDuration,
-                    curve: MegaStyle.basicCurve,
-                    decoration: BoxDecoration(color: sideColor(context)),
-                    child: Column(
-                      children: items!.map((item) {
-                        var index = items!.indexOf(item);
-                        return MegaSideBarItem(
-                          icon: item.icon,
-                          title: item.title,
-                          badge: item.badge,
-                          selected: index == selectedIndex,
-                          onPressed: () => _itemTapped(item),
-                          compact: deviceWidth(context) < 960.0,
-                        );
-                      }).toList(),
-                    ),
-                  ),
-                if (deviceWidth(context) > 640.0 && items != null)
-                  const MegaVerticalDivider(),
-                Expanded(child: body),
+                MegaHeaderBar(
+                  leading: widget.headerBarLeading,
+                  center: widget.headerBarCenter,
+                  trailing: widget.headerBarTrailing,
+                ),
+                Expanded(child: widget.body),
               ],
             ),
-          ),
-          if (deviceWidth(context) < 640.0 && items != null)
-            const MegaHorizontalDivider(),
-          if (deviceWidth(context) < 640.0 && items != null)
-            Container(
-              height: MegaStyle.bottomBarHeight,
-              width: double.infinity,
-              decoration: BoxDecoration(color: headerColor(context)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: items!.map((item) {
-                  var index = items!.indexOf(item);
-                  return MegaBottomNavigationBarItem(
-                    icon: item.icon,
-                    title: item.title,
-                    badge: item.badge,
-                    selected: index == selectedIndex,
-                    onPressed: () => _itemTapped(item),
-                    compact: items!.length > 4,
-                  );
-                }).toList(),
-              ),
-            ),
-        ],
-      ),
-    );
+          );
   }
 }
 
 class NavigationItem {
   final String title;
   final IconData icon;
-  final Widget badge;
+  final WidgetBuilder builder;
+  final MegaBadge? badge;
   final Color accentColor;
 
   const NavigationItem({
     required this.title,
     required this.icon,
-    this.badge = const SizedBox.shrink(),
+    required this.builder,
+    this.badge,
     this.accentColor = MegaStyle.accentColor1,
   });
 }

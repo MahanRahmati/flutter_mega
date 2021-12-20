@@ -7,7 +7,7 @@ class MegaHorizontalSeparator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: MegaStyle.hVertical,
+      padding: MegaStyle.smallVertical,
       child: MegaHorizontalDivider(),
     );
   }
@@ -19,7 +19,7 @@ class MegaVerticalSeparator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: MegaStyle.hHorizontal,
+      padding: MegaStyle.smallHorizontal,
       child: MegaVerticalDivider(),
     );
   }

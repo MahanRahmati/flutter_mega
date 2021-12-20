@@ -8,7 +8,6 @@ class MegaBaseButton extends StatefulWidget {
   final bool selected;
   final FocusNode? focusNode;
   final bool autofocus;
-  final bool linked;
   final Widget child;
 
   const MegaBaseButton({
@@ -19,7 +18,6 @@ class MegaBaseButton extends StatefulWidget {
     this.selected = false,
     this.focusNode,
     this.autofocus = false,
-    this.linked = false,
     required this.child,
   }) : super(key: key);
 
@@ -46,17 +44,13 @@ class _MegaBaseButtonState extends State<MegaBaseButton> {
           duration: MegaStyle.basicDuration,
           curve: MegaStyle.basicCurve,
           decoration: BoxDecoration(
-            borderRadius: widget.linked
-                ? MegaStyle.borderRadius0
-                : MegaStyle.borderRadius,
+            borderRadius: MegaStyle.borderRadius,
             border: Border.all(
               color: focused
                   ? MegaStyle.accentColor1
                   : widget.selected
                       ? MegaStyle.accentColor1
-                      : widget.linked
-                          ? MegaStyle.transparent
-                          : borderColor(context),
+                      : borderColor(context),
             ),
             color: widget.disabled
                 ? backgroundColorDisabled(context)

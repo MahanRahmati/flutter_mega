@@ -24,7 +24,6 @@ class MegaIconButton extends StatelessWidget {
       padding: MegaStyle.small,
       child: MegaBaseButton(
         onTap: onPressed,
-        width: MegaStyle.buttonSize,
         disabled: disabled,
         selected: selected,
         focusNode: focusNode,

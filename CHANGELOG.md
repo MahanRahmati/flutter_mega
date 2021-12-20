@@ -1,3 +1,14 @@
+## 0.1.1
+
+- refactor MegaApp
+- add MegaBadge to MegaBottomNavigationBarItem,MegaSideBarItem and MegaScaffold
+- rename hHorizontal and hVertical to smallHorizontal and smallVertical
+- remove unused code from MegaBaseButton
+- add MegaRadio
+- add MegaListTile
+- refactor MegaScaffold
+- fix MegaIconButton
+
 ## 0.1.0
 
 - refactor mega

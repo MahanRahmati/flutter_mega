@@ -395,14 +395,12 @@ class MegaScrollBehavior extends ScrollBehavior {
     BuildContext context,
     Widget child,
     ScrollableDetails details,
-  ) {
-    return child;
-  }
+  ) =>
+      child;
 
   @override
-  ScrollPhysics getScrollPhysics(BuildContext context) {
-    return const BouncingScrollPhysics();
-  }
+  ScrollPhysics getScrollPhysics(BuildContext context) =>
+      const BouncingScrollPhysics();
 }
 
 class _MegaAppState extends State<MegaApp> {
@@ -433,9 +431,8 @@ class _MegaAppState extends State<MegaApp> {
   Widget _inspectorSelectButtonBuilder(
     BuildContext context,
     VoidCallback onPressed,
-  ) {
-    return MegaIconButton(icon: Icons.search_outlined, onPressed: onPressed);
-  }
+  ) =>
+      MegaIconButton(icon: Icons.search_outlined, onPressed: onPressed);
 
   WidgetsApp _buildWidgetApp(BuildContext context) {
     final Color color = widget.color ?? MegaStyle.accentColor1;

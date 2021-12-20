@@ -4,7 +4,7 @@ import 'package:mega/mega.dart';
 class MegaSideBarItem extends StatelessWidget {
   final IconData icon;
   final String title;
-  final Widget badge;
+  final MegaBadge? badge;
   final Color accentColor;
   final bool selected;
   final FocusNode? focusNode;
@@ -16,7 +16,7 @@ class MegaSideBarItem extends StatelessWidget {
     Key? key,
     required this.icon,
     required this.title,
-    this.badge = const SizedBox.shrink(),
+    this.badge,
     this.accentColor = MegaStyle.accentColor1,
     this.selected = false,
     this.focusNode,
@@ -75,7 +75,7 @@ class MegaSideBarItem extends StatelessWidget {
               ),
             ],
           ),
-          badge,
+          if (badge != null) badge!,
         ],
       ),
     );
