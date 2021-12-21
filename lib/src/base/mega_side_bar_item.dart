@@ -49,18 +49,21 @@ class MegaSideBarItem extends StatelessWidget {
                         size: MegaStyle.iconSize,
                         color: iconColor(context),
                       )
-                    : Row(
-                        children: [
-                          Padding(
-                            padding: MegaStyle.right,
-                            child: Icon(
-                              icon,
-                              size: MegaStyle.iconSize,
-                              color: iconColor(context),
+                    : SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: MegaStyle.right,
+                              child: Icon(
+                                icon,
+                                size: MegaStyle.iconSize,
+                                color: iconColor(context),
+                              ),
                             ),
-                          ),
-                          Text(title, style: button(context, false)),
-                        ],
+                            Text(title, style: button(context, false)),
+                          ],
+                        ),
                       ),
               ),
               AnimatedContainer(

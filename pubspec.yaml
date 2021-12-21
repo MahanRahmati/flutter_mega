@@ -2,7 +2,7 @@ name: mega
 description: Mega widgets and themes for Flutter.
 homepage: https://github.com/MahanRahmati/flutter_mega
 
-version: 0.1.1
+version: 0.1.2
 
 environment:
   sdk: ">=2.15.0 <3.0.0"
@@ -19,3 +19,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: fonts/Inter-Bold.otf
+          weight: 700
+        - asset: fonts/Inter-Light.otf
+          weight: 300
+        - asset: fonts/Inter-Regular.otf
+          weight: 400

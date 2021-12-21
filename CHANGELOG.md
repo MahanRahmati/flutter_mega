@@ -1,3 +1,8 @@
+## 0.1.2
+
+- fix MegaSideBarItem
+- add Inter Fonts
+
 ## 0.1.1
 
 - refactor MegaApp
