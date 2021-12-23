@@ -28,7 +28,7 @@ class _HomeState extends State<Home> {
   var _selectedType = "1";
   bool _checkBox1 = false;
   bool _checkBox2 = false;
-  bool _checkBox3 = false;
+  bool? _checkBox3;
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +93,7 @@ class _HomeState extends State<Home> {
                 subtitle: "Subtitle 1",
                 trailing: MegaCheckBox(
                   value: _checkBox1,
-                  onChanged: (value) => setState(() => _checkBox1 = !value!),
+                  onChanged: (value) => setState(() => _checkBox1 = value!),
                 ),
               ),
               MegaListTile(
@@ -107,7 +107,7 @@ class _HomeState extends State<Home> {
                 subtitle: "Subtitle 2",
                 trailing: MegaCheckBox(
                   value: _checkBox2,
-                  onChanged: (value) => setState(() => _checkBox2 = !value!),
+                  onChanged: (value) => setState(() => _checkBox2 = value!),
                 ),
               ),
               MegaListTile(
@@ -121,7 +121,8 @@ class _HomeState extends State<Home> {
                 subtitle: "Subtitle 3",
                 trailing: MegaCheckBox(
                   value: _checkBox3,
-                  onChanged: (value) => setState(() => _checkBox3 = !value!),
+                  tristate: true,
+                  onChanged: (value) => setState(() => _checkBox3 = value),
                 ),
               ),
             ],

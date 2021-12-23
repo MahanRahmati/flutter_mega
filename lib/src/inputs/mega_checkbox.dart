@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:mega/mega.dart';
 
 class MegaCheckBox extends StatefulWidget {
-  final bool value;
+  final bool? value;
   final bool tristate;
   final ValueChanged<bool?>? onChanged;
   final Color accentColor;
@@ -32,9 +32,19 @@ class _MegaCheckBoxState extends State<MegaCheckBox> {
   @override
   Widget build(BuildContext context) {
     bool disabled = widget.onChanged != null ? false : true;
+    bool selected = widget.value != null ? widget.value! : true;
     return GestureDetector(
       onTap: () {
-        if (!disabled) widget.onChanged!(widget.value);
+        if (!disabled && widget.value == false) widget.onChanged!(true);
+        if (!disabled && widget.value == true && widget.tristate == true) {
+          widget.onChanged!(null);
+        }
+        if (!disabled && widget.value == true && widget.tristate == false) {
+          widget.onChanged!(false);
+        }
+        if (!disabled && widget.value == null && widget.tristate == true) {
+          widget.onChanged!(false);
+        }
       },
       child: FocusableActionDetector(
         focusNode: disabled ? null : widget.focusNode,
@@ -54,13 +64,13 @@ class _MegaCheckBoxState extends State<MegaCheckBox> {
                 border: Border.all(
                   color: focused
                       ? MegaStyle.accentColor1
-                      : widget.value
+                      : selected
                           ? MegaStyle.accentColor1
                           : borderColor(context),
                 ),
                 color: disabled
                     ? backgroundColorDisabled(context)
-                    : widget.value
+                    : selected
                         ? MegaStyle.accentColor1
                         : hovering
                             ? hoverColor(context)
@@ -72,17 +82,29 @@ class _MegaCheckBoxState extends State<MegaCheckBox> {
               width: MegaStyle.checkBoxSize,
               duration: MegaStyle.basicDuration,
               curve: MegaStyle.basicCurve,
-              child: Icon(
-                Icons.check_outlined,
-                size: widget.value ? MegaStyle.checkBoxIconSize : 0,
-                color: disabled
-                    ? backgroundColorDisabled(context)
-                    : widget.value
-                        ? cardBackgroundColor(context)
-                        : hovering
-                            ? hoverColor(context)
-                            : backgroundColor(context),
-              ),
+              child: widget.value != null
+                  ? Icon(
+                      Icons.check_outlined,
+                      size: selected ? MegaStyle.checkBoxIconSize : 0,
+                      color: disabled
+                          ? backgroundColorDisabled(context)
+                          : selected
+                              ? cardBackgroundColor(context)
+                              : hovering
+                                  ? hoverColor(context)
+                                  : backgroundColor(context),
+                    )
+                  : Icon(
+                      Icons.remove_outlined,
+                      size: selected ? MegaStyle.checkBoxIconSize : 0,
+                      color: disabled
+                          ? backgroundColorDisabled(context)
+                          : selected
+                              ? cardBackgroundColor(context)
+                              : hovering
+                                  ? hoverColor(context)
+                                  : backgroundColor(context),
+                    ),
             ),
           ],
         ),
