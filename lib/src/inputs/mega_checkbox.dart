@@ -1,33 +1,33 @@
+import 'package:flutter/material.dart' show Icons;
 import 'package:flutter/widgets.dart';
 import 'package:mega/mega.dart';
 
-class MegaRadio<T> extends StatefulWidget {
-  final T value;
-  final T? groupValue;
-  final ValueChanged<T?>? onChanged;
+class MegaCheckBox extends StatefulWidget {
+  final bool value;
+  final bool tristate;
+  final ValueChanged<bool?>? onChanged;
   final Color accentColor;
   final FocusNode? focusNode;
   final bool autofocus;
 
-  const MegaRadio({
+  const MegaCheckBox({
     Key? key,
     required this.value,
-    required this.groupValue,
+    this.tristate = false,
     required this.onChanged,
     this.accentColor = MegaStyle.accentColor1,
     this.focusNode,
     this.autofocus = false,
   }) : super(key: key);
 
-  bool get _selected => value == groupValue;
-
   @override
-  State<MegaRadio<T>> createState() => _MegaRadioState<T>();
+  _MegaCheckBoxState createState() => _MegaCheckBoxState();
 }
 
-class _MegaRadioState<T> extends State<MegaRadio<T>> {
+class _MegaCheckBoxState extends State<MegaCheckBox> {
   bool hovering = false;
   bool focused = false;
+  bool selected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -45,22 +45,22 @@ class _MegaRadioState<T> extends State<MegaRadio<T>> {
           alignment: Alignment.center,
           children: [
             AnimatedContainer(
-              height: MegaStyle.radioSize,
-              width: MegaStyle.radioSize,
+              height: MegaStyle.checkBoxSize,
+              width: MegaStyle.checkBoxSize,
               duration: MegaStyle.basicDuration,
               curve: MegaStyle.basicCurve,
               decoration: BoxDecoration(
-                borderRadius: MegaStyle.radioBorderRadius,
+                borderRadius: MegaStyle.checkBoxBorderRadius,
                 border: Border.all(
                   color: focused
                       ? MegaStyle.accentColor1
-                      : widget._selected
+                      : widget.value
                           ? MegaStyle.accentColor1
                           : borderColor(context),
                 ),
                 color: disabled
                     ? backgroundColorDisabled(context)
-                    : widget._selected
+                    : widget.value
                         ? MegaStyle.accentColor1
                         : hovering
                             ? hoverColor(context)
@@ -68,15 +68,16 @@ class _MegaRadioState<T> extends State<MegaRadio<T>> {
               ),
             ),
             AnimatedContainer(
-              height: widget._selected ? MegaStyle.radioIndicatorSize : 0,
-              width: widget._selected ? MegaStyle.radioIndicatorSize : 0,
+              height: MegaStyle.checkBoxSize,
+              width: MegaStyle.checkBoxSize,
               duration: MegaStyle.basicDuration,
               curve: MegaStyle.basicCurve,
-              decoration: BoxDecoration(
-                borderRadius: MegaStyle.radioBorderRadius,
+              child: Icon(
+                Icons.check_outlined,
+                size: widget.value ? MegaStyle.checkBoxIconSize : 0,
                 color: disabled
                     ? backgroundColorDisabled(context)
-                    : widget._selected
+                    : widget.value
                         ? cardBackgroundColor(context)
                         : hovering
                             ? hoverColor(context)

@@ -30,9 +30,9 @@ class _MegaScrollbarState extends RawScrollbarState<MegaScrollbar> {
     scrollbarPainter
       ..color = MegaStyle.accentColor1
       ..textDirection = Directionality.of(context)
-      ..thickness = MegaStyle.halfPadding
-      ..mainAxisMargin = MegaStyle.halfPadding
-      ..crossAxisMargin = MegaStyle.halfPadding
+      ..thickness = MegaStyle.smallPadding
+      ..mainAxisMargin = MegaStyle.smallPadding
+      ..crossAxisMargin = MegaStyle.smallPadding
       ..radius = const Radius.circular(MegaStyle.borderRadiusSize)
       ..padding = MediaQuery.of(context).padding
       ..minLength = MegaStyle.buttonSize

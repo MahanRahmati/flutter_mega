@@ -26,6 +26,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   var _selectedType = "1";
+  bool _checkBox1 = false;
+  bool _checkBox2 = false;
+  bool _checkBox3 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -88,9 +91,9 @@ class _HomeState extends State<Home> {
                 ),
                 title: "Title 1",
                 subtitle: "Subtitle 1",
-                trailing: const MegaIconButton(
-                  icon: Icons.add_outlined,
-                  onPressed: null,
+                trailing: MegaCheckBox(
+                  value: _checkBox1,
+                  onChanged: (value) => setState(() => _checkBox1 = !value!),
                 ),
               ),
               MegaListTile(
@@ -102,9 +105,9 @@ class _HomeState extends State<Home> {
                 ),
                 title: "Title 2",
                 subtitle: "Subtitle 2",
-                trailing: const MegaIconButton(
-                  icon: Icons.add_outlined,
-                  onPressed: null,
+                trailing: MegaCheckBox(
+                  value: _checkBox2,
+                  onChanged: (value) => setState(() => _checkBox2 = !value!),
                 ),
               ),
               MegaListTile(
@@ -116,37 +119,9 @@ class _HomeState extends State<Home> {
                 ),
                 title: "Title 3",
                 subtitle: "Subtitle 3",
-                trailing: const MegaIconButton(
-                  icon: Icons.add_outlined,
-                  onPressed: null,
-                ),
-              ),
-              MegaListTile(
-                leading: MegaRadio(
-                  value: "4",
-                  groupValue: _selectedType,
-                  onChanged: (value) =>
-                      setState(() => _selectedType = value as String),
-                ),
-                title: "Title 4",
-                subtitle: "Subtitle 4",
-                trailing: const MegaIconButton(
-                  icon: Icons.add_outlined,
-                  onPressed: null,
-                ),
-              ),
-              MegaListTile(
-                leading: MegaRadio(
-                  value: "5",
-                  groupValue: _selectedType,
-                  onChanged: (value) =>
-                      setState(() => _selectedType = value as String),
-                ),
-                title: "Title 5",
-                subtitle: "Subtitle 5",
-                trailing: const MegaIconButton(
-                  icon: Icons.add_outlined,
-                  onPressed: null,
+                trailing: MegaCheckBox(
+                  value: _checkBox3,
+                  onChanged: (value) => setState(() => _checkBox3 = !value!),
                 ),
               ),
             ],

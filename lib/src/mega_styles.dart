@@ -64,7 +64,7 @@ abstract class MegaStyle {
 
   // Doubles
   static const double padding = 7;
-  static const double halfPadding = 3.5;
+  static const double smallPadding = 3.5;
   static const double borderRadiusSize = 7;
   static const double headerBarHeight = 49;
   static const double bottomBarHeight = 49;
@@ -75,7 +75,9 @@ abstract class MegaStyle {
   static const double maxTabWidth = 210;
   static const double minTabWidth = 105;
   static const double buttonSize = 35;
-  static const double radioButtonSize = 21;
+  static const double radioSize = 21;
+  static const double checkBoxSize = 21;
+  static const double checkBoxIconSize = 17.5;
   static const double radioIndicatorSize = 12.25;
   static const double badgeSize = 28;
   static const double iconSize = 21;
@@ -88,16 +90,16 @@ abstract class MegaStyle {
 
   // Paddings
   static const EdgeInsets normal = EdgeInsets.all(padding);
-  static const EdgeInsets small = EdgeInsets.all(halfPadding);
+  static const EdgeInsets small = EdgeInsets.all(smallPadding);
   static const EdgeInsets horizontal = EdgeInsets.symmetric(
     horizontal: padding,
   );
   static const EdgeInsets vertical = EdgeInsets.symmetric(vertical: padding);
   static const EdgeInsets smallHorizontal = EdgeInsets.symmetric(
-    horizontal: halfPadding,
+    horizontal: smallPadding,
   );
   static const EdgeInsets smallVertical = EdgeInsets.symmetric(
-    vertical: halfPadding,
+    vertical: smallPadding,
   );
   static const EdgeInsets left = EdgeInsets.only(left: padding);
   static const EdgeInsets top = EdgeInsets.only(top: padding);
@@ -110,6 +112,10 @@ abstract class MegaStyle {
   );
 
   static const BorderRadius radioBorderRadius = BorderRadius.all(
-    Radius.circular(radioButtonSize),
+    Radius.circular(radioSize),
+  );
+
+  static const BorderRadius checkBoxBorderRadius = BorderRadius.all(
+    Radius.circular(smallPadding),
   );
 }

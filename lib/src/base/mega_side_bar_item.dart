@@ -68,7 +68,7 @@ class MegaSideBarItem extends StatelessWidget {
               ),
               AnimatedContainer(
                 height: selected ? MegaStyle.iconSize : 0,
-                width: MegaStyle.halfPadding,
+                width: MegaStyle.smallPadding,
                 duration: MegaStyle.basicDuration,
                 curve: MegaStyle.basicCurve,
                 decoration: BoxDecoration(

@@ -79,7 +79,7 @@ TextStyle headline2(context) => TextStyle(
 
 TextStyle headline3(context) => TextStyle(
       fontFamily: 'Inter',
-      fontWeight: FontWeight.w300,
+      fontWeight: FontWeight.normal,
       fontSize: 48,
       letterSpacing: 0.0,
       decoration: TextDecoration.none,
@@ -88,7 +88,7 @@ TextStyle headline3(context) => TextStyle(
 
 TextStyle headline4(context) => TextStyle(
       fontFamily: 'Inter',
-      fontWeight: FontWeight.w300,
+      fontWeight: FontWeight.normal,
       fontSize: 34,
       letterSpacing: -0.25,
       decoration: TextDecoration.none,
@@ -97,7 +97,7 @@ TextStyle headline4(context) => TextStyle(
 
 TextStyle headline5(context) => TextStyle(
       fontFamily: 'Inter',
-      fontWeight: FontWeight.w300,
+      fontWeight: FontWeight.normal,
       fontSize: 24,
       letterSpacing: 0.0,
       decoration: TextDecoration.none,
@@ -106,7 +106,7 @@ TextStyle headline5(context) => TextStyle(
 
 TextStyle headline6(context) => TextStyle(
       fontFamily: 'Inter',
-      fontWeight: FontWeight.w300,
+      fontWeight: FontWeight.w500,
       fontSize: 20,
       letterSpacing: 0.15,
       decoration: TextDecoration.none,
@@ -115,7 +115,7 @@ TextStyle headline6(context) => TextStyle(
 
 TextStyle subtitle1(context) => TextStyle(
       fontFamily: 'Inter',
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.normal,
       fontSize: 16,
       letterSpacing: 0.15,
       decoration: TextDecoration.none,
@@ -124,7 +124,7 @@ TextStyle subtitle1(context) => TextStyle(
 
 TextStyle subtitle2(context) => TextStyle(
       fontFamily: 'Inter',
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w500,
       fontSize: 14,
       letterSpacing: 0.1,
       decoration: TextDecoration.none,
@@ -133,7 +133,7 @@ TextStyle subtitle2(context) => TextStyle(
 
 TextStyle bodyText1(context) => TextStyle(
       fontFamily: 'Inter',
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.normal,
       fontSize: 16,
       letterSpacing: 0.5,
       decoration: TextDecoration.none,
@@ -142,7 +142,7 @@ TextStyle bodyText1(context) => TextStyle(
 
 TextStyle bodyText2(context) => TextStyle(
       fontFamily: 'Inter',
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.normal,
       fontSize: 14,
       letterSpacing: 0.25,
       decoration: TextDecoration.none,
@@ -151,7 +151,7 @@ TextStyle bodyText2(context) => TextStyle(
 
 TextStyle button(context, bool disabled) => TextStyle(
       fontFamily: 'Inter',
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w500,
       fontSize: 14,
       letterSpacing: 1.25,
       decoration: TextDecoration.none,
@@ -160,7 +160,7 @@ TextStyle button(context, bool disabled) => TextStyle(
 
 TextStyle caption(context) => TextStyle(
       fontFamily: 'Inter',
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.normal,
       fontSize: 12,
       letterSpacing: 0.4,
       decoration: TextDecoration.none,
@@ -169,7 +169,7 @@ TextStyle caption(context) => TextStyle(
 
 TextStyle statusBarText(context) => TextStyle(
       fontFamily: 'Inter',
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.normal,
       fontSize: 12,
       letterSpacing: 0.4,
       decoration: TextDecoration.none,
@@ -178,7 +178,7 @@ TextStyle statusBarText(context) => TextStyle(
 
 TextStyle overline(context) => TextStyle(
       fontFamily: 'Inter',
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.normal,
       fontSize: 10,
       letterSpacing: 1.5,
       decoration: TextDecoration.none,

@@ -1,3 +1,9 @@
+## 0.1.3
+
+- update fonts
+- rename halfPadding to smallPadding
+- add MegaCheckBox
+
 ## 0.1.2
 
 - fix MegaSideBarItem
