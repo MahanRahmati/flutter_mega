@@ -38,8 +38,8 @@ abstract class MegaStyle {
   static const Color primaryTextColorDark = backgroundColorLight;
 
   // SecondaryTextColor
-  static const Color secondaryTextColorLight = hoverColorDark;
-  static const Color secondaryTextColorDark = hoverColorLight;
+  static const Color secondaryTextColorLight = borderColorDark;
+  static const Color secondaryTextColorDark = borderColorLight;
 
   // IconColor
   static const Color iconColorLight = hoverColorDark;
@@ -81,6 +81,10 @@ abstract class MegaStyle {
   static const double radioIndicatorSize = 12.25;
   static const double badgeSize = 28;
   static const double iconSize = 21;
+  // static const double switchWidth = 56;
+  static const double switchWidth = 49;
+  static const double switchHeight = 28;
+  static const double switchThumbSize = 24.5;
 
   // Durations
   static const Duration basicDuration = Duration(milliseconds: 210);
@@ -117,5 +121,9 @@ abstract class MegaStyle {
 
   static const BorderRadius checkBoxBorderRadius = BorderRadius.all(
     Radius.circular(smallPadding),
+  );
+
+  static const BorderRadius switchBorderRadius = BorderRadius.all(
+    Radius.circular(switchHeight),
   );
 }

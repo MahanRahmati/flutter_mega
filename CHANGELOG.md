@@ -1,6 +1,9 @@
-## 0.1.3+1
+## 0.1.4
 
 - update MegaCheckBox
+- update secondaryTextColor
+- add MegaSwitch
+- fix widget.accentColor
 
 ## 0.1.3
 

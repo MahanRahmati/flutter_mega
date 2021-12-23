@@ -29,6 +29,7 @@ class _HomeState extends State<Home> {
   bool _checkBox1 = false;
   bool _checkBox2 = false;
   bool? _checkBox3;
+  bool _switch1 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -123,6 +124,14 @@ class _HomeState extends State<Home> {
                   value: _checkBox3,
                   tristate: true,
                   onChanged: (value) => setState(() => _checkBox3 = value),
+                ),
+              ),
+              MegaListTile(
+                title: "Title 3",
+                subtitle: "Subtitle 3",
+                trailing: MegaSwitch(
+                  value: _switch1,
+                  onChanged: (value) => setState(() => _switch1 = value),
                 ),
               ),
             ],

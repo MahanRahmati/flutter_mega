@@ -1,31 +1,27 @@
 import 'package:flutter/widgets.dart';
 import 'package:mega/mega.dart';
 
-class MegaRadio<T> extends StatefulWidget {
-  final T value;
-  final T? groupValue;
-  final ValueChanged<T?>? onChanged;
+class MegaSwitch extends StatefulWidget {
+  final bool value;
+  final ValueChanged<bool>? onChanged;
   final Color accentColor;
   final FocusNode? focusNode;
   final bool autofocus;
 
-  const MegaRadio({
+  const MegaSwitch({
     Key? key,
     required this.value,
-    required this.groupValue,
     required this.onChanged,
     this.accentColor = MegaStyle.accentColor1,
     this.focusNode,
     this.autofocus = false,
   }) : super(key: key);
 
-  bool get _selected => value == groupValue;
-
   @override
-  State<MegaRadio<T>> createState() => _MegaRadioState<T>();
+  _MegaSwitchState createState() => _MegaSwitchState();
 }
 
-class _MegaRadioState<T> extends State<MegaRadio<T>> {
+class _MegaSwitchState extends State<MegaSwitch> {
   bool hovering = false;
   bool focused = false;
 
@@ -34,7 +30,7 @@ class _MegaRadioState<T> extends State<MegaRadio<T>> {
     bool disabled = widget.onChanged != null ? false : true;
     return GestureDetector(
       onTap: () {
-        if (!disabled) widget.onChanged!(widget.value);
+        if (!disabled) widget.onChanged!(!widget.value);
       },
       child: FocusableActionDetector(
         focusNode: disabled ? null : widget.focusNode,
@@ -45,42 +41,46 @@ class _MegaRadioState<T> extends State<MegaRadio<T>> {
           alignment: Alignment.center,
           children: [
             AnimatedContainer(
-              height: MegaStyle.radioSize,
-              width: MegaStyle.radioSize,
+              height: MegaStyle.switchHeight,
+              width: MegaStyle.switchWidth,
               duration: MegaStyle.basicDuration,
               curve: MegaStyle.basicCurve,
               decoration: BoxDecoration(
-                borderRadius: MegaStyle.radioBorderRadius,
+                borderRadius: MegaStyle.switchBorderRadius,
                 border: Border.all(
                   color: focused
                       ? widget.accentColor
-                      : widget._selected
+                      : widget.value
                           ? widget.accentColor
                           : borderColor(context),
                 ),
                 color: disabled
                     ? backgroundColorDisabled(context)
-                    : widget._selected
+                    : widget.value
                         ? widget.accentColor
                         : hovering
                             ? hoverColor(context)
                             : backgroundColor(context),
               ),
             ),
-            AnimatedContainer(
-              height: widget._selected ? MegaStyle.radioIndicatorSize : 0,
-              width: widget._selected ? MegaStyle.radioIndicatorSize : 0,
+            AnimatedPositioned(
               duration: MegaStyle.basicDuration,
               curve: MegaStyle.basicCurve,
-              decoration: BoxDecoration(
-                borderRadius: MegaStyle.radioBorderRadius,
-                color: disabled
-                    ? backgroundColorDisabled(context)
-                    : widget._selected
-                        ? cardBackgroundColor(context)
-                        : hovering
-                            ? hoverColor(context)
-                            : backgroundColor(context),
+              left: widget.value
+                  ? MegaStyle.switchWidth - MegaStyle.switchThumbSize - 2
+                  : 2,
+              child: AnimatedContainer(
+                height: MegaStyle.switchThumbSize,
+                width: MegaStyle.switchThumbSize,
+                duration: MegaStyle.basicDuration,
+                curve: MegaStyle.basicCurve,
+                decoration: BoxDecoration(
+                  borderRadius: MegaStyle.radioBorderRadius,
+                  border: Border.all(color: borderColor(context)),
+                  color: disabled
+                      ? backgroundColorDisabled(context)
+                      : MegaStyle.cardBackgroundColorLight,
+                ),
               ),
             ),
           ],

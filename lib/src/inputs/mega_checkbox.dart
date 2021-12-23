@@ -63,15 +63,15 @@ class _MegaCheckBoxState extends State<MegaCheckBox> {
                 borderRadius: MegaStyle.checkBoxBorderRadius,
                 border: Border.all(
                   color: focused
-                      ? MegaStyle.accentColor1
+                      ? widget.accentColor
                       : selected
-                          ? MegaStyle.accentColor1
+                          ? widget.accentColor
                           : borderColor(context),
                 ),
                 color: disabled
                     ? backgroundColorDisabled(context)
                     : selected
-                        ? MegaStyle.accentColor1
+                        ? widget.accentColor
                         : hovering
                             ? hoverColor(context)
                             : backgroundColor(context),

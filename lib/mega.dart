@@ -22,5 +22,6 @@ export 'package:mega/src/dividers/mega_divider.dart';
 export 'package:mega/src/dividers/mega_separator.dart';
 export 'package:mega/src/inputs/mega_checkbox.dart';
 export 'package:mega/src/inputs/mega_radio.dart';
+export 'package:mega/src/inputs/mega_switch.dart';
 export 'package:mega/src/mega_helpers.dart';
 export 'package:mega/src/mega_styles.dart';
