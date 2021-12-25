@@ -20,14 +20,23 @@ class MegaHeaderBar extends StatelessWidget {
       child: Column(
         children: [
           Container(
+            height: MediaQuery.of(context).padding.top,
+            decoration: BoxDecoration(color: headerColor(context)),
+          ),
+          Container(
             height: MegaStyle.headerBarHeight,
             width: double.infinity,
             decoration: BoxDecoration(color: headerColor(context)),
             child: Padding(
               padding: MegaStyle.horizontal,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [leading, center, trailing],
+                children: [
+                  leading,
+                  const Spacer(),
+                  center,
+                  const Spacer(),
+                  trailing,
+                ],
               ),
             ),
           ),

@@ -38,7 +38,7 @@ class _MegaScaffoldState extends State<MegaScaffold> {
     return widget.items != null
         ? LayoutBuilder(
             builder: (context, constraints) {
-              if (constraints.maxWidth < 640) {
+              if (constraints.maxWidth < 644) {
                 return MegaPortraitLayout(
                   headerBarLeading: widget.headerBarLeading,
                   headerBarCenter: widget.headerBarCenter,

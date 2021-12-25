@@ -1,3 +1,11 @@
+## 0.1.5
+
+- add largePadding
+- update MegaList
+- update MegaCard paddings
+- fix MegaHeaderBar top padding
+- update MegaHeaderBar spacing
+
 ## 0.1.4
 
 - update MegaCheckBox

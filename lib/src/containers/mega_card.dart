@@ -16,7 +16,7 @@ class MegaCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: MegaStyle.small,
+      padding: MegaStyle.normal,
       child: AnimatedContainer(
         height: height,
         width: width,
