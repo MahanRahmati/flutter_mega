@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:mega/mega.dart';
 
 class MegaLandscapeLayout extends StatefulWidget {

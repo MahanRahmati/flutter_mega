@@ -1,5 +1,4 @@
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:mega/mega.dart';
 
 bool isDark(context) =>
@@ -63,7 +62,6 @@ TextStyle headline1(context) => TextStyle(
       fontFamily: 'Inter',
       fontWeight: FontWeight.w300,
       fontSize: 96,
-      letterSpacing: -1.5,
       decoration: TextDecoration.none,
       color: primaryTextColor(context),
     );
@@ -72,7 +70,6 @@ TextStyle headline2(context) => TextStyle(
       fontFamily: 'Inter',
       fontWeight: FontWeight.w300,
       fontSize: 60,
-      letterSpacing: -0.5,
       decoration: TextDecoration.none,
       color: primaryTextColor(context),
     );
@@ -81,7 +78,6 @@ TextStyle headline3(context) => TextStyle(
       fontFamily: 'Inter',
       fontWeight: FontWeight.normal,
       fontSize: 48,
-      letterSpacing: 0.0,
       decoration: TextDecoration.none,
       color: primaryTextColor(context),
     );
@@ -90,7 +86,6 @@ TextStyle headline4(context) => TextStyle(
       fontFamily: 'Inter',
       fontWeight: FontWeight.normal,
       fontSize: 34,
-      letterSpacing: -0.25,
       decoration: TextDecoration.none,
       color: primaryTextColor(context),
     );
@@ -99,7 +94,6 @@ TextStyle headline5(context) => TextStyle(
       fontFamily: 'Inter',
       fontWeight: FontWeight.normal,
       fontSize: 24,
-      letterSpacing: 0.0,
       decoration: TextDecoration.none,
       color: primaryTextColor(context),
     );
@@ -108,7 +102,6 @@ TextStyle headline6(context) => TextStyle(
       fontFamily: 'Inter',
       fontWeight: FontWeight.w500,
       fontSize: 20,
-      letterSpacing: 0.15,
       decoration: TextDecoration.none,
       color: primaryTextColor(context),
     );
@@ -117,7 +110,6 @@ TextStyle subtitle1(context) => TextStyle(
       fontFamily: 'Inter',
       fontWeight: FontWeight.normal,
       fontSize: 16,
-      letterSpacing: 0.15,
       decoration: TextDecoration.none,
       color: secondaryTextColor(context),
     );
@@ -126,7 +118,6 @@ TextStyle subtitle2(context) => TextStyle(
       fontFamily: 'Inter',
       fontWeight: FontWeight.w500,
       fontSize: 14,
-      letterSpacing: 0.1,
       decoration: TextDecoration.none,
       color: secondaryTextColor(context),
     );
@@ -135,7 +126,6 @@ TextStyle bodyText1(context) => TextStyle(
       fontFamily: 'Inter',
       fontWeight: FontWeight.normal,
       fontSize: 16,
-      letterSpacing: 0.5,
       decoration: TextDecoration.none,
       color: primaryTextColor(context),
     );
@@ -144,7 +134,6 @@ TextStyle bodyText2(context) => TextStyle(
       fontFamily: 'Inter',
       fontWeight: FontWeight.normal,
       fontSize: 14,
-      letterSpacing: 0.25,
       decoration: TextDecoration.none,
       color: primaryTextColor(context),
     );
@@ -153,7 +142,6 @@ TextStyle button(context, bool disabled) => TextStyle(
       fontFamily: 'Inter',
       fontWeight: FontWeight.w500,
       fontSize: 14,
-      letterSpacing: 1.25,
       decoration: TextDecoration.none,
       color: disabled ? disabledColor(context) : primaryTextColor(context),
     );
@@ -162,7 +150,6 @@ TextStyle caption(context) => TextStyle(
       fontFamily: 'Inter',
       fontWeight: FontWeight.normal,
       fontSize: 12,
-      letterSpacing: 0.4,
       decoration: TextDecoration.none,
       color: primaryTextColor(context),
     );
@@ -171,7 +158,6 @@ TextStyle statusBarText(context) => TextStyle(
       fontFamily: 'Inter',
       fontWeight: FontWeight.normal,
       fontSize: 12,
-      letterSpacing: 0.4,
       decoration: TextDecoration.none,
       color: reversePrimaryTextColor(context),
     );
@@ -180,9 +166,11 @@ TextStyle overline(context) => TextStyle(
       fontFamily: 'Inter',
       fontWeight: FontWeight.normal,
       fontSize: 10,
-      letterSpacing: 1.5,
       decoration: TextDecoration.none,
       color: primaryTextColor(context),
     );
 
 double deviceWidth(context) => MediaQuery.of(context).size.width;
+
+BorderRadius megaBorderRadius(double borderRadius) =>
+    BorderRadius.all(Radius.circular(borderRadius));

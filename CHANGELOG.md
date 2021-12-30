@@ -1,3 +1,11 @@
+## 0.1.6
+
+- update MegaStyle
+- add first draft for MegaTextField
+- update fonts
+- add package:flutter/widgets.dart to Mega
+- update readme
+
 ## 0.1.5
 
 - add largePadding

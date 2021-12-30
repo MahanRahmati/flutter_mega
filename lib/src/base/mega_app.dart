@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart'
     show CupertinoPageRoute, DefaultCupertinoLocalizations;
 import 'package:flutter/material.dart' show DefaultMaterialLocalizations, Icons;
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:mega/mega.dart';
 
 /// An application that uses Mega design.

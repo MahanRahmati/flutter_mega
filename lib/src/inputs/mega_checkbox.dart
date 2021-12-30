@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart' show Icons;
-import 'package:flutter/widgets.dart';
 import 'package:mega/mega.dart';
 
 class MegaCheckBox extends StatefulWidget {

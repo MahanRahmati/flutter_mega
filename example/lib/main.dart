@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart' show Icons;
-import 'package:flutter/widgets.dart';
 import 'package:mega/mega.dart';
 
 void main() => runApp(const MyApp());
@@ -132,6 +131,12 @@ class _HomeState extends State<Home> {
                 trailing: MegaSwitch(
                   value: _switch1,
                   onChanged: (value) => setState(() => _switch1 = value),
+                ),
+              ),
+              const SizedBox(
+                child: MegaTextField(
+                  hint: "Hint text...",
+                  clearButtonMode: OverlayVisibilityMode.editing,
                 ),
               ),
             ],

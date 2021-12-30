@@ -1,5 +1,6 @@
 library mega;
 
+export 'package:flutter/widgets.dart';
 export 'package:mega/src/base/mega_app.dart';
 export 'package:mega/src/base/mega_bottom_navigation_bar_item.dart';
 export 'package:mega/src/base/mega_header_bar.dart';
@@ -23,5 +24,6 @@ export 'package:mega/src/dividers/mega_separator.dart';
 export 'package:mega/src/inputs/mega_checkbox.dart';
 export 'package:mega/src/inputs/mega_radio.dart';
 export 'package:mega/src/inputs/mega_switch.dart';
+export 'package:mega/src/inputs/mega_text_field.dart';
 export 'package:mega/src/mega_helpers.dart';
 export 'package:mega/src/mega_styles.dart';

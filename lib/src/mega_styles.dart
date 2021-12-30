@@ -1,8 +1,7 @@
-import 'package:flutter/widgets.dart';
+import 'package:mega/mega.dart';
 
 abstract class MegaStyle {
   // Colors
-
   static const Color transparent = Color(0x00000000);
 
   // BackgroundColor
@@ -64,27 +63,32 @@ abstract class MegaStyle {
 
   // Doubles
   static const double smallPadding = 3.5;
+  static const double cursorWidth = 3.5;
+  static const double cursorRadius = 3.5;
   static const double padding = 7;
-  static const double largePadding = 14;
   static const double borderRadiusSize = 7;
-  static const double headerBarHeight = 49;
-  static const double bottomBarHeight = 49;
-  static const double sideBarWidth = 315;
-  static const double sideBarItemWidth = 301;
-  static const double sideBarCompactWidth = 49;
-  static const double tabBarHeight = 42;
-  static const double maxTabWidth = 210;
-  static const double minTabWidth = 105;
-  static const double buttonSize = 35;
+  static const double radioIndicatorSize = 12.25;
+  static const double largePadding = 14;
+  static const double checkBoxIconSize = 17.5;
   static const double radioSize = 21;
   static const double checkBoxSize = 21;
-  static const double checkBoxIconSize = 17.5;
-  static const double radioIndicatorSize = 12.25;
-  static const double badgeSize = 28;
   static const double iconSize = 21;
-  static const double switchWidth = 49;
-  static const double switchHeight = 28;
+  static const double scrollPaddingSize = 21;
+  static const double cursorHeight = 21;
   static const double switchThumbSize = 24.5;
+  static const double badgeSize = 28;
+  static const double switchHeight = 28;
+  static const double buttonSize = 35;
+  static const double textFieldSize = 35;
+  static const double tabBarHeight = 42;
+  static const double headerBarHeight = 49;
+  static const double bottomBarHeight = 49;
+  static const double switchWidth = 49;
+  static const double sideBarCompactWidth = 49;
+  static const double maxTabWidth = 210;
+  static const double minTabWidth = 105;
+  static const double sideBarItemWidth = 301;
+  static const double sideBarWidth = 315;
 
   // Durations
   static const Duration basicDuration = Duration(milliseconds: 210);
@@ -116,21 +120,11 @@ abstract class MegaStyle {
   static const EdgeInsets top = EdgeInsets.only(top: padding);
   static const EdgeInsets right = EdgeInsets.only(right: padding);
   static const EdgeInsets bottom = EdgeInsets.only(bottom: padding);
+  static const EdgeInsets scrollPadding = EdgeInsets.all(scrollPaddingSize);
 
   // BorderRadius
-  static const BorderRadius borderRadius = BorderRadius.all(
-    Radius.circular(borderRadiusSize),
-  );
-
-  static const BorderRadius radioBorderRadius = BorderRadius.all(
-    Radius.circular(radioSize),
-  );
-
-  static const BorderRadius checkBoxBorderRadius = BorderRadius.all(
-    Radius.circular(smallPadding),
-  );
-
-  static const BorderRadius switchBorderRadius = BorderRadius.all(
-    Radius.circular(switchHeight),
-  );
+  static BorderRadius borderRadius = megaBorderRadius(borderRadiusSize);
+  static BorderRadius radioBorderRadius = megaBorderRadius(radioSize);
+  static BorderRadius checkBoxBorderRadius = megaBorderRadius(smallPadding);
+  static BorderRadius switchBorderRadius = megaBorderRadius(switchHeight);
 }

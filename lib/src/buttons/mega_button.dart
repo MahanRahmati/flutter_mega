@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:mega/mega.dart';
 
 class MegaButton extends StatelessWidget {

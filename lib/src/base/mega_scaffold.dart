@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:mega/mega.dart';
 
 // Based on https://github.com/ubuntu/yaru_widgets.dart/blob/main/lib/src/yaru_master_detail_page.dart
