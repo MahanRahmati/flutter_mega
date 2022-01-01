@@ -29,14 +29,28 @@ class _HomeState extends State<Home> {
   bool _checkBox2 = false;
   bool? _checkBox3;
   bool _switch1 = false;
+  var showSearch = false;
+  TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return MegaScaffold(
+      headerBarLeading: MegaIconButton(
+        icon: Icons.search_outlined,
+        selected: showSearch,
+        onPressed: () => setState(() {
+          showSearch = !showSearch;
+          controller.text = "";
+        }),
+      ),
       headerBarTrailing: Row(
         children: [
           MegaIconButton(icon: Icons.info_outlined, onPressed: () {}),
         ],
+      ),
+      searchField: MegaSearchField(
+        showSearch: showSearch,
+        controller: controller,
       ),
       items: [
         NavigationItem(

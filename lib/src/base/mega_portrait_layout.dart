@@ -9,6 +9,7 @@ class MegaPortraitLayout extends StatefulWidget {
   final int selectedIndex;
   final List<NavigationItem> items;
   final ValueChanged<int> onItemSelected;
+  final MegaSearchField? searchField;
 
   const MegaPortraitLayout({
     Key? key,
@@ -18,6 +19,7 @@ class MegaPortraitLayout extends StatefulWidget {
     required this.selectedIndex,
     required this.items,
     required this.onItemSelected,
+    this.searchField,
   }) : super(key: key);
 
   @override
@@ -71,6 +73,7 @@ class _MegaPortraitLayoutState extends State<MegaPortraitLayout> {
                 ),
                 trailing: widget.headerBarTrailing,
               ),
+              if (widget.searchField != null) widget.searchField!,
               Expanded(
                 child: SingleChildScrollView(
                   child: Center(

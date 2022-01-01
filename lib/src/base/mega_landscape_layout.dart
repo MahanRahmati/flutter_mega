@@ -7,6 +7,7 @@ class MegaLandscapeLayout extends StatefulWidget {
   final int selectedIndex;
   final List<NavigationItem> items;
   final ValueChanged<int> onItemSelected;
+  final MegaSearchField? searchField;
 
   const MegaLandscapeLayout({
     Key? key,
@@ -16,6 +17,7 @@ class MegaLandscapeLayout extends StatefulWidget {
     required this.selectedIndex,
     required this.items,
     required this.onItemSelected,
+    this.searchField,
   }) : super(key: key);
 
   @override
@@ -47,6 +49,7 @@ class _MegaLandscapeLayoutState extends State<MegaLandscapeLayout> {
             center: widget.headerBarCenter,
             trailing: widget.headerBarTrailing,
           ),
+          if (widget.searchField != null) widget.searchField!,
           Expanded(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,

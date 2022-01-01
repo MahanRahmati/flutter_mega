@@ -1,3 +1,11 @@
+## 0.1.7
+
+- fix focusNode and autofocus in MegaTextField
+- update MegaListTile
+- add MegaSearchField
+- add MegaSearchField to MegaScaffold
+- update readme
+
 ## 0.1.6
 
 - update MegaStyle

@@ -89,6 +89,7 @@ abstract class MegaStyle {
   static const double minTabWidth = 105;
   static const double sideBarItemWidth = 301;
   static const double sideBarWidth = 315;
+  static const double searchWidth = 301;
 
   // Durations
   static const Duration basicDuration = Duration(milliseconds: 210);

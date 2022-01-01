@@ -385,8 +385,6 @@ class _MegaTextFieldState extends State<MegaTextField>
               _requestKeyboard();
             },
       child: FocusableActionDetector(
-        focusNode: !enabled ? null : widget.focusNode,
-        autofocus: !enabled ? false : widget.autofocus,
         onShowHoverHighlight: (hover) => setState(() => hovering = hover),
         onShowFocusHighlight: (focus) => setState(() => focused = focus),
         child: AnimatedContainer(

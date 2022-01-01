@@ -8,6 +8,7 @@ class MegaScaffold extends StatefulWidget {
   final Widget body;
   final List<NavigationItem>? items;
   final ValueChanged<int>? onItemSelected;
+  final MegaSearchField? searchField;
 
   const MegaScaffold({
     Key? key,
@@ -17,6 +18,7 @@ class MegaScaffold extends StatefulWidget {
     required this.body,
     this.items,
     this.onItemSelected,
+    this.searchField,
   }) : super(key: key);
 
   @override
@@ -45,6 +47,7 @@ class _MegaScaffoldState extends State<MegaScaffold> {
                   selectedIndex: _index,
                   items: widget.items!,
                   onItemSelected: _setIndex,
+                  searchField: widget.searchField,
                 );
               } else {
                 return MegaLandscapeLayout(
@@ -54,6 +57,7 @@ class _MegaScaffoldState extends State<MegaScaffold> {
                   selectedIndex: _index == -1 ? _previousIndex : _index,
                   items: widget.items!,
                   onItemSelected: _setIndex,
+                  searchField: widget.searchField,
                 );
               }
             },
@@ -67,6 +71,7 @@ class _MegaScaffoldState extends State<MegaScaffold> {
                   center: widget.headerBarCenter,
                   trailing: widget.headerBarTrailing,
                 ),
+                if (widget.searchField != null) widget.searchField!,
                 Expanded(child: widget.body),
               ],
             ),
