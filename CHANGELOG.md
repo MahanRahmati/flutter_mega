@@ -1,3 +1,14 @@
+## 0.1.8
+
+- cleanup MegaApp
+- refactor MegaList
+- refactor MegaListTile
+- update MegaCheckBox
+- add MegaCheckBoxListTile
+- add MegaRadioListTile
+- add MegaSwitchListTile
+- fix MegaSearchField focusNode and autofocus
+
 ## 0.1.7
 
 - fix focusNode and autofocus in MegaTextField

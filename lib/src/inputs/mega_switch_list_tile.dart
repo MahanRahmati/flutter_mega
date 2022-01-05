@@ -1,40 +1,40 @@
 import 'package:mega/mega.dart';
 
-class MegaListTile extends StatefulWidget {
-  final Widget leading;
+class MegaSwitchListTile extends StatefulWidget {
+  final bool value;
+  final ValueChanged<bool>? onChanged;
+  final Color accentColor;
   final String? title;
   final String? subtitle;
-  final Widget trailing;
-  final VoidCallback? onPressed;
-  final Color accentColor;
   final FocusNode? focusNode;
   final bool autofocus;
 
-  const MegaListTile({
+  const MegaSwitchListTile({
     Key? key,
-    this.leading = const SizedBox.shrink(),
+    required this.value,
+    required this.onChanged,
+    this.accentColor = MegaStyle.accentColor1,
     this.title,
     this.subtitle,
-    this.trailing = const SizedBox.shrink(),
-    this.onPressed,
-    this.accentColor = MegaStyle.accentColor1,
     this.focusNode,
     this.autofocus = false,
   }) : super(key: key);
 
   @override
-  State<MegaListTile> createState() => _MegaListTileState();
+  State<MegaSwitchListTile> createState() => _MegaSwitchListTileState();
 }
 
-class _MegaListTileState extends State<MegaListTile> {
+class _MegaSwitchListTileState extends State<MegaSwitchListTile> {
   bool hovering = false;
   bool focused = false;
 
   @override
   Widget build(BuildContext context) {
-    bool disabled = widget.onPressed != null ? false : true;
+    bool disabled = widget.onChanged != null ? false : true;
     return GestureDetector(
-      onTap: widget.onPressed,
+      onTap: () {
+        if (!disabled) widget.onChanged!(!widget.value);
+      },
       child: FocusableActionDetector(
         focusNode: disabled ? null : widget.focusNode,
         autofocus: disabled ? false : widget.autofocus,
@@ -58,7 +58,6 @@ class _MegaListTileState extends State<MegaListTile> {
           ),
           child: Row(
             children: [
-              Padding(padding: MegaStyle.normal, child: widget.leading),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -85,7 +84,14 @@ class _MegaListTileState extends State<MegaListTile> {
                 ],
               ),
               const Spacer(),
-              Padding(padding: MegaStyle.normal, child: widget.trailing),
+              Padding(
+                padding: MegaStyle.normal,
+                child: MegaSwitch(
+                  value: widget.value,
+                  onChanged: widget.onChanged,
+                  accentColor: widget.accentColor,
+                ),
+              ),
             ],
           ),
         ),

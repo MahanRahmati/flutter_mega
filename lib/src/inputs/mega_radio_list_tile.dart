@@ -1,40 +1,42 @@
 import 'package:mega/mega.dart';
 
-class MegaListTile extends StatefulWidget {
-  final Widget leading;
+class MegaRadioListTile<T> extends StatefulWidget {
+  final T value;
+  final T? groupValue;
+  final ValueChanged<T?>? onChanged;
+  final Color accentColor;
   final String? title;
   final String? subtitle;
-  final Widget trailing;
-  final VoidCallback? onPressed;
-  final Color accentColor;
   final FocusNode? focusNode;
   final bool autofocus;
 
-  const MegaListTile({
+  const MegaRadioListTile({
     Key? key,
-    this.leading = const SizedBox.shrink(),
+    required this.value,
+    required this.groupValue,
+    required this.onChanged,
+    this.accentColor = MegaStyle.accentColor1,
     this.title,
     this.subtitle,
-    this.trailing = const SizedBox.shrink(),
-    this.onPressed,
-    this.accentColor = MegaStyle.accentColor1,
     this.focusNode,
     this.autofocus = false,
   }) : super(key: key);
 
   @override
-  State<MegaListTile> createState() => _MegaListTileState();
+  State<MegaRadioListTile> createState() => _MegaRadioListTileState();
 }
 
-class _MegaListTileState extends State<MegaListTile> {
+class _MegaRadioListTileState extends State<MegaRadioListTile> {
   bool hovering = false;
   bool focused = false;
 
   @override
   Widget build(BuildContext context) {
-    bool disabled = widget.onPressed != null ? false : true;
+    bool disabled = widget.onChanged != null ? false : true;
     return GestureDetector(
-      onTap: widget.onPressed,
+      onTap: () {
+        if (!disabled) widget.onChanged!(widget.value);
+      },
       child: FocusableActionDetector(
         focusNode: disabled ? null : widget.focusNode,
         autofocus: disabled ? false : widget.autofocus,
@@ -58,7 +60,15 @@ class _MegaListTileState extends State<MegaListTile> {
           ),
           child: Row(
             children: [
-              Padding(padding: MegaStyle.normal, child: widget.leading),
+              Padding(
+                padding: MegaStyle.normal,
+                child: MegaRadio(
+                  value: widget.value,
+                  groupValue: widget.groupValue,
+                  onChanged: widget.onChanged,
+                  accentColor: widget.accentColor,
+                ),
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -85,7 +95,6 @@ class _MegaListTileState extends State<MegaListTile> {
                 ],
               ),
               const Spacer(),
-              Padding(padding: MegaStyle.normal, child: widget.trailing),
             ],
           ),
         ),

@@ -44,6 +44,8 @@ class MegaSearchField extends StatelessWidget {
                   onEditingComplete: onEditingComplete,
                   onSubmitted: onSubmitted,
                   clearButtonMode: OverlayVisibilityMode.editing,
+                  focusNode: focusNode,
+                  autofocus: autofocus,
                 ),
               ),
             ),

@@ -26,11 +26,11 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   var _selectedType = "1";
   bool _checkBox1 = false;
-  bool _checkBox2 = false;
-  bool? _checkBox3;
+  bool? _checkBox2 = false;
   bool _switch1 = false;
   var showSearch = false;
   TextEditingController controller = TextEditingController();
+  FocusNode focusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +41,11 @@ class _HomeState extends State<Home> {
         onPressed: () => setState(() {
           showSearch = !showSearch;
           controller.text = "";
+          if (showSearch) {
+            FocusScope.of(context).requestFocus(focusNode);
+          } else {
+            FocusScope.of(context).unfocus();
+          }
         }),
       ),
       headerBarTrailing: Row(
@@ -51,6 +56,8 @@ class _HomeState extends State<Home> {
       searchField: MegaSearchField(
         showSearch: showSearch,
         controller: controller,
+        autofocus: showSearch,
+        focusNode: focusNode,
       ),
       items: [
         NavigationItem(
@@ -93,151 +100,63 @@ class _HomeState extends State<Home> {
         NavigationItem(
           title: "Inputs",
           icon: Icons.check_box_outlined,
-          builder: (_) => MegaList(
-            title: "Title 1",
+          builder: (_) => Column(
             children: [
-              MegaListTile(
-                leading: MegaRadio(
-                  value: "1",
-                  groupValue: _selectedType,
-                  onChanged: (value) =>
-                      setState(() => _selectedType = value as String),
-                ),
-                title: "Title 1",
-                subtitle: "Subtitle 1",
-                trailing: MegaCheckBox(
-                  value: _checkBox1,
-                  onChanged: (value) => setState(() => _checkBox1 = value!),
-                ),
+              MegaList(
+                title: "CheckBox",
+                children: [
+                  MegaCheckBoxListTile(
+                    value: _checkBox1,
+                    title: "CheckBox 1",
+                    subtitle: "Subtitle 1",
+                    onChanged: (value) => setState(() => _checkBox1 = value!),
+                  ),
+                  MegaCheckBoxListTile(
+                    value: _checkBox2,
+                    title: "CheckBox 2",
+                    subtitle: "Subtitle 2",
+                    tristate: true,
+                    onChanged: (value) => setState(() => _checkBox2 = value),
+                  ),
+                ],
               ),
-              MegaListTile(
-                leading: MegaRadio(
-                  value: "2",
-                  groupValue: _selectedType,
-                  onChanged: (value) =>
-                      setState(() => _selectedType = value as String),
-                ),
-                title: "Title 2",
-                subtitle: "Subtitle 2",
-                trailing: MegaCheckBox(
-                  value: _checkBox2,
-                  onChanged: (value) => setState(() => _checkBox2 = value!),
-                ),
+              MegaList(
+                title: "Radio",
+                children: [
+                  MegaRadioListTile(
+                    value: "1",
+                    groupValue: _selectedType,
+                    title: "Radio 1",
+                    subtitle: "Subtitle 1",
+                    onChanged: (value) =>
+                        setState(() => _selectedType = value as String),
+                  ),
+                  MegaRadioListTile(
+                    value: "2",
+                    groupValue: _selectedType,
+                    title: "Radio 2",
+                    subtitle: "Subtitle 2",
+                    onChanged: (value) =>
+                        setState(() => _selectedType = value as String),
+                  ),
+                ],
               ),
-              MegaListTile(
-                leading: MegaRadio(
-                  value: "3",
-                  groupValue: _selectedType,
-                  onChanged: (value) =>
-                      setState(() => _selectedType = value as String),
-                ),
-                title: "Title 3",
-                subtitle: "Subtitle 3",
-                trailing: MegaCheckBox(
-                  value: _checkBox3,
-                  tristate: true,
-                  onChanged: (value) => setState(() => _checkBox3 = value),
-                ),
-              ),
-              MegaListTile(
-                title: "Title 3",
-                subtitle: "Subtitle 3",
-                trailing: MegaSwitch(
-                  value: _switch1,
-                  onChanged: (value) => setState(() => _switch1 = value),
-                ),
-              ),
-              const SizedBox(
-                child: MegaTextField(
-                  hint: "Hint text...",
-                  clearButtonMode: OverlayVisibilityMode.editing,
-                ),
+              MegaList(
+                title: "Switch",
+                children: [
+                  MegaSwitchListTile(
+                    title: "Switch 1",
+                    subtitle: "Subtitle 1",
+                    value: _switch1,
+                    onChanged: (value) => setState(() => _switch1 = value),
+                  ),
+                ],
               ),
             ],
           ),
         ),
       ],
-      body: Center(
-        child: Column(
-          children: [
-            MegaList(
-              title: "Title",
-              children: [
-                MegaListTile(
-                  leading: MegaRadio(
-                    value: "1",
-                    groupValue: _selectedType,
-                    onChanged: (value) =>
-                        setState(() => _selectedType = value as String),
-                  ),
-                  title: "Title 1",
-                  subtitle: "Subtitle 1",
-                  trailing: const MegaIconButton(
-                    icon: Icons.add_outlined,
-                    onPressed: null,
-                  ),
-                ),
-                MegaListTile(
-                  leading: MegaRadio(
-                    value: "2",
-                    groupValue: _selectedType,
-                    onChanged: (value) =>
-                        setState(() => _selectedType = value as String),
-                  ),
-                  title: "Title 2",
-                  subtitle: "Subtitle 2",
-                  trailing: const MegaIconButton(
-                    icon: Icons.add_outlined,
-                    onPressed: null,
-                  ),
-                ),
-                MegaListTile(
-                  leading: MegaRadio(
-                    value: "3",
-                    groupValue: _selectedType,
-                    onChanged: (value) =>
-                        setState(() => _selectedType = value as String),
-                  ),
-                  title: "Title 3",
-                  subtitle: "Subtitle 3",
-                  trailing: const MegaIconButton(
-                    icon: Icons.add_outlined,
-                    onPressed: null,
-                  ),
-                ),
-                MegaListTile(
-                  leading: MegaRadio(
-                    value: "4",
-                    groupValue: _selectedType,
-                    onChanged: (value) =>
-                        setState(() => _selectedType = value as String),
-                  ),
-                  title: "Title 4",
-                  subtitle: "Subtitle 4",
-                  trailing: const MegaIconButton(
-                    icon: Icons.add_outlined,
-                    onPressed: null,
-                  ),
-                ),
-                MegaListTile(
-                  leading: MegaRadio(
-                    value: "5",
-                    groupValue: _selectedType,
-                    onChanged: (value) =>
-                        setState(() => _selectedType = value as String),
-                  ),
-                  title: "Title 5",
-                  subtitle: "Subtitle 5",
-                  trailing: const MegaIconButton(
-                    icon: Icons.add_outlined,
-                    onPressed: null,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+      body: const Center(),
     );
   }
 }

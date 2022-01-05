@@ -1,40 +1,57 @@
 import 'package:mega/mega.dart';
 
-class MegaListTile extends StatefulWidget {
-  final Widget leading;
+class MegaCheckBoxListTile extends StatefulWidget {
+  final bool? value;
+  final bool tristate;
+  final ValueChanged<bool?>? onChanged;
+  final Color accentColor;
   final String? title;
   final String? subtitle;
-  final Widget trailing;
-  final VoidCallback? onPressed;
-  final Color accentColor;
   final FocusNode? focusNode;
   final bool autofocus;
 
-  const MegaListTile({
+  const MegaCheckBoxListTile({
     Key? key,
-    this.leading = const SizedBox.shrink(),
+    required this.value,
+    this.tristate = false,
+    required this.onChanged,
+    this.accentColor = MegaStyle.accentColor1,
     this.title,
     this.subtitle,
-    this.trailing = const SizedBox.shrink(),
-    this.onPressed,
-    this.accentColor = MegaStyle.accentColor1,
     this.focusNode,
     this.autofocus = false,
   }) : super(key: key);
 
   @override
-  State<MegaListTile> createState() => _MegaListTileState();
+  State<MegaCheckBoxListTile> createState() => _MegaCheckBoxListTileState();
 }
 
-class _MegaListTileState extends State<MegaListTile> {
+class _MegaCheckBoxListTileState extends State<MegaCheckBoxListTile> {
   bool hovering = false;
   bool focused = false;
 
   @override
   Widget build(BuildContext context) {
-    bool disabled = widget.onPressed != null ? false : true;
+    bool disabled = widget.onChanged != null ? false : true;
+
+    void _handleValueChange() {
+      if (!disabled) {
+        switch (widget.value) {
+          case false:
+            widget.onChanged!(true);
+            break;
+          case true:
+            widget.onChanged!(widget.tristate ? null : false);
+            break;
+          case null:
+            widget.onChanged!(false);
+            break;
+        }
+      }
+    }
+
     return GestureDetector(
-      onTap: widget.onPressed,
+      onTap: widget.onChanged != null ? _handleValueChange : null,
       child: FocusableActionDetector(
         focusNode: disabled ? null : widget.focusNode,
         autofocus: disabled ? false : widget.autofocus,
@@ -58,7 +75,15 @@ class _MegaListTileState extends State<MegaListTile> {
           ),
           child: Row(
             children: [
-              Padding(padding: MegaStyle.normal, child: widget.leading),
+              Padding(
+                padding: MegaStyle.normal,
+                child: MegaCheckBox(
+                  value: widget.value,
+                  tristate: widget.tristate,
+                  onChanged: widget.onChanged,
+                  accentColor: widget.accentColor,
+                ),
+              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -85,7 +110,6 @@ class _MegaListTileState extends State<MegaListTile> {
                 ],
               ),
               const Spacer(),
-              Padding(padding: MegaStyle.normal, child: widget.trailing),
             ],
           ),
         ),

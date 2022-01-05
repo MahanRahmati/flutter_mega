@@ -12,13 +12,28 @@ class MegaList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> newChildren = [];
+    if (children.isNotEmpty) {
+      for (int i = 0; i < children.length; i++) {
+        newChildren.add(children[i]);
+        if (children.length - i != 1) {
+          newChildren.add(const MegaHorizontalDivider());
+        }
+      }
+    }
+
     return Padding(
       padding: MegaStyle.normal,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: MegaStyle.normal,
+            padding: const EdgeInsets.fromLTRB(
+              MegaStyle.padding,
+              0,
+              MegaStyle.padding,
+              MegaStyle.largePadding,
+            ),
             child: Text(
               title,
               style: headline6(context),
@@ -26,15 +41,18 @@ class MegaList extends StatelessWidget {
             ),
           ),
           AnimatedContainer(
-            padding: MegaStyle.normal,
             duration: MegaStyle.basicDuration,
             curve: MegaStyle.basicCurve,
+            clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
               borderRadius: MegaStyle.borderRadius,
               border: Border.all(color: borderColor(context)),
               color: cardBackgroundColor(context),
             ),
-            child: Column(children: children),
+            child: ClipRRect(
+              borderRadius: MegaStyle.borderRadius,
+              child: Column(children: newChildren),
+            ),
           ),
         ],
       ),

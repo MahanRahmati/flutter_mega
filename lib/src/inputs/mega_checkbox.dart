@@ -32,19 +32,25 @@ class _MegaCheckBoxState extends State<MegaCheckBox> {
   Widget build(BuildContext context) {
     bool disabled = widget.onChanged != null ? false : true;
     bool selected = widget.value != null ? widget.value! : true;
+
+    void _handleValueChange() {
+      if (!disabled) {
+        switch (widget.value) {
+          case false:
+            widget.onChanged!(true);
+            break;
+          case true:
+            widget.onChanged!(widget.tristate ? null : false);
+            break;
+          case null:
+            widget.onChanged!(false);
+            break;
+        }
+      }
+    }
+
     return GestureDetector(
-      onTap: () {
-        if (!disabled && widget.value == false) widget.onChanged!(true);
-        if (!disabled && widget.value == true && widget.tristate == true) {
-          widget.onChanged!(null);
-        }
-        if (!disabled && widget.value == true && widget.tristate == false) {
-          widget.onChanged!(false);
-        }
-        if (!disabled && widget.value == null && widget.tristate == true) {
-          widget.onChanged!(false);
-        }
-      },
+      onTap: widget.onChanged != null ? _handleValueChange : null,
       child: FocusableActionDetector(
         focusNode: disabled ? null : widget.focusNode,
         autofocus: disabled ? false : widget.autofocus,
