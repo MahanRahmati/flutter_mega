@@ -1,4 +1,6 @@
-# Mega
+# Mega - DISCONTINUED
+
+# Evolved to [Arna](https://github.com/MahanRahmati/Arna)
 
 Mega widgets and themes for Flutter.
 https://pub.dev/packages/mega
